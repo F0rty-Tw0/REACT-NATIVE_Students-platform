@@ -1,12 +1,12 @@
 import { View, Pressable } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { LoginButton } from '@/components/auth/LoginButton';
-import { RegisterButton } from '@/components/auth/RegisterButton';
-import { LogoutButton } from '@/components/auth/LogoutButton';
+import { AuthButton } from '@/components/auth/AuthButton';
 import { DisplayUserInterface } from '@/models/interfaces/authInterface';
 import { login, logout, register } from '@/redux/actions/authActions';
+import { useNavigation } from '@react-navigation/native';
 
-export const AuthMenu = ({ navigation }: any) => {
+export const AuthMenu = () => {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   const user: DisplayUserInterface = useSelector(
     (state: any) => state.authReducer?.user
@@ -22,7 +22,7 @@ export const AuthMenu = ({ navigation }: any) => {
           opacity: pressed ? 0.5 : 1,
         })}
       >
-        <LoginButton />
+        <AuthButton title='Login' />
       </Pressable>
       <Pressable
         onPress={() => {
@@ -33,19 +33,20 @@ export const AuthMenu = ({ navigation }: any) => {
           opacity: pressed ? 0.5 : 1,
         })}
       >
-        <RegisterButton />
+        <AuthButton title='Register' />
       </Pressable>
     </View>
   ) : (
     <Pressable
       onPress={() => {
+        navigation.navigate('Root');
         dispatch(logout());
       }}
       style={({ pressed }) => ({
         opacity: pressed ? 0.5 : 1,
       })}
     >
-      <LogoutButton />
+      <AuthButton title='Logout' />
     </Pressable>
   );
 };

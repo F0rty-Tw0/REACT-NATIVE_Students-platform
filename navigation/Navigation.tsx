@@ -82,10 +82,10 @@ function BottomTabNavigator() {
       <BottomTab.Screen
         name='TabOne'
         component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
+        options={() => ({
           title: 'Tab One',
           tabBarIcon: ({ color }) => <TabBarIcon name='code' color={color} />,
-          headerRight: () => <AuthMenu navigation={navigation} />,
+          headerRight: () => <AuthMenu />,
         })}
       />
       <BottomTab.Screen

@@ -1,11 +1,13 @@
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 import { AuthForm } from '@/components/auth/AuthForm';
 import { setUser } from '@/redux/actions/authActions';
+import { useNavigation } from '@react-navigation/native';
 
 export const Register = () => {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const handleRegister = async (email: string, password: string) => {
@@ -23,6 +25,7 @@ export const Register = () => {
           token: user.refreshToken,
         })
       );
+      navigation.navigate('Root');
     } catch (error) {
       console.log(error);
     }

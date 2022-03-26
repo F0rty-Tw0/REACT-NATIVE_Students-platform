@@ -1,11 +1,12 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { useDispatch } from 'react-redux';
-
 import { AuthForm } from '@/components/auth/AuthForm';
 import { setUser } from '@/redux/actions/authActions';
+import { useNavigation } from '@react-navigation/native';
 
 export const Login = () => {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const handleLogin = async (email: string, password: string) => {
@@ -19,6 +20,7 @@ export const Login = () => {
           token: user.refreshToken,
         })
       );
+      navigation.navigate('Root');
     } catch (error) {
       console.log(error);
     }

@@ -1,7 +1,10 @@
 import { MonoText } from '@/components/shared/StyledText';
 
-export const LoginButton = () => (
+interface ButtonProps {
+  title: string;
+}
+export const AuthButton = ({ title }: ButtonProps) => (
   <MonoText style={{ marginHorizontal: 15, fontSize: 20, fontWeight: 'bold' }}>
-    Login
+    {title}
   </MonoText>
 );
