@@ -1,24 +1,24 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, Button, TextInput } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppDispatcher } from '@/hooks/redux-hooks/useAppDispatcher';
+import { useAppSelector } from '@/hooks/redux-hooks/useAppSelector';
 import {
   addMessage,
   deleteMessage,
   likeMessage,
 } from '@/redux/actions/chatActions';
 import { MessageInterface } from '@/models/interfaces/messageInterface';
+import { ChatInterface } from '@/models/interfaces/chatInterface';
 
 export default function Chat() {
-  const allMessages: MessageInterface[] = useSelector(
-    (state: any) => state.chatReducer.messages
-  );
+  const chats: ChatInterface[] = useAppSelector((state) => state.chatReducer);
   const [message, setMessage] = useState('');
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatcher();
   return (
     <View style={styles.container}>
-      {allMessages.map((chatMessage: MessageInterface) => (
-        <View key={chatMessage.id}>
+      {chats[0].messages.map((chatMessage: MessageInterface) => (
+        <View key={chatMessage.messageId}>
           <Text>{chatMessage.text}</Text>
           <Text>{chatMessage.isFavorite ? '<3' : ''}</Text>
           <Button
@@ -42,7 +42,7 @@ export default function Chat() {
         title='Add'
         onPress={() => {
           setMessage('');
-          dispatch(addMessage(message));
+          dispatch(addMessage(chats[0].chatId, message));
         }}
       />
     </View>

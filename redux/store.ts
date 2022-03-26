@@ -8,3 +8,6 @@ export const store = createStore(
   allReducers,
   compose(applyMiddleware(ReduxThunk), devToolsEnhancer())
 );
+
+export type AppDispatcher = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;

@@ -1,5 +1,6 @@
 export interface MessageInterface {
-  id: number;
+  chatId: number;
+  messageId: number;
   text: string;
   isFavorite: boolean;
 }

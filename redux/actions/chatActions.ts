@@ -7,9 +7,9 @@ import {
 
 import { MessageInterface } from '@/models/interfaces/messageInterface';
 
-export const addMessage = (messageText: string) => ({
+export const addMessage = (chatId: number, text: string) => ({
   type: ADD_MESSAGE,
-  payload: messageText,
+  payload: { chatId, text },
 });
 
 export const editMessage = (message: MessageInterface) => ({
