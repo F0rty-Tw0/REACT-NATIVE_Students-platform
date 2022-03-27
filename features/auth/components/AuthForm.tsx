@@ -1,5 +1,8 @@
+//COMPONENTS
+import { StyleSheet, Button, TextInput } from 'react-native';
+import { View } from '@/components/shared/Themed';
+//HOOKS
 import { useState } from 'react';
-import { StyleSheet, View, Button, TextInput } from 'react-native';
 
 interface FormProps {
   title: string;

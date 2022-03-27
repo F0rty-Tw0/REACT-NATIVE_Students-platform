@@ -6,18 +6,20 @@ import {
   addMessage,
   deleteMessage,
   likeMessage,
-} from '@/redux/actions/chatActions';
+} from '@/redux/actions/messageActions';
 import { MessageInterface } from '@/models/interfaces/messageInterface';
-import { ChatInterface } from '@/models/interfaces/chatInterface';
 
-export default function Chat() {
-  const chats: ChatInterface[] = useAppSelector((state) => state.chatReducer);
+export default function Chat({ selectedChatId }: { selectedChatId: number }) {
+  selectedChatId = 0;
+  const chatMessages: MessageInterface[] = useAppSelector(
+    (state) => state.messageReducer[0]?.messages
+  );
   const [message, setMessage] = useState('');
 
   const dispatch = useAppDispatcher();
   return (
     <View style={styles.container}>
-      {chats[0].messages.map((chatMessage: MessageInterface) => (
+      {chatMessages?.map((chatMessage: MessageInterface) => (
         <View key={chatMessage.messageId}>
           <Text>{chatMessage.text}</Text>
           <Text>{chatMessage.isFavorite ? '<3' : ''}</Text>
@@ -42,7 +44,7 @@ export default function Chat() {
         title='Add'
         onPress={() => {
           setMessage('');
-          dispatch(addMessage(chats[0].chatId, message));
+          dispatch(addMessage(selectedChatId, message));
         }}
       />
     </View>

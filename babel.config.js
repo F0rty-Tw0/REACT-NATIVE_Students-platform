@@ -26,6 +26,7 @@ module.exports = function (api) {
             '@/navigation': './navigation',
             '@/redux': './redux',
             '@/screens': './screens',
+            '@/features': './features',
             '@/types': './types',
           },
         },

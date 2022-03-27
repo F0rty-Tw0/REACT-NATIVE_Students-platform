@@ -1,6 +1,6 @@
-import { SET_USER, LOGOUT } from '@/redux/types';
-import { AuthUserInterface } from '@/models/interfaces/authInterface';
-
+import { SET_USER, LOGOUT } from '@/features/auth/redux/types';
+import { AuthUserInterface } from 'features/auth/models/interfaces/authInterface';
+import { Dispatch } from 'redux';
 const initialState = {
   user: null,
 };
@@ -32,3 +32,8 @@ export const authReducer = (
       return state;
   }
 };
+
+// const login = () => async (_dispatch: Dispatch, getState) => {
+//   dispatch({})
+//   const { user } = await signInWithEmailAndPassword(auth, email, password);
+// };

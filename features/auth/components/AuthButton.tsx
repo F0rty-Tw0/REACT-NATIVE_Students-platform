@@ -1,3 +1,4 @@
+//COMPONENTS
 import { MonoText } from '@/components/shared/StyledText';
 
 interface ButtonProps {

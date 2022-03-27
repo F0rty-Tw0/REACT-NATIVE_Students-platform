@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER } from '@/redux/types';
+import { LOGIN_SUCCESS, REGISTER_SUCCESS } from '@/features/auth/redux/types';
 
 const initialState = {
   appState: null,
@@ -15,15 +15,15 @@ export const appReducer = (
   }
 ) => {
   switch (action.type) {
-    case LOGIN:
+    case LOGIN_SUCCESS:
       return {
         ...state,
-        appState: LOGIN,
+        appState: LOGIN_SUCCESS,
       };
-    case REGISTER:
+    case REGISTER_SUCCESS:
       return {
         ...state,
-        appState: REGISTER,
+        appState: REGISTER_SUCCESS,
       };
     default:
       return state;

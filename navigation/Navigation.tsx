@@ -20,8 +20,8 @@ import useColorScheme from '@/hooks/useColorScheme';
 import NotFoundScreen from '@/screens/NotFoundScreen';
 import TabOneScreen from '@/screens/TabOneScreen';
 import TabTwoScreen from '@/screens/TabTwoScreen';
-import { AuthModal } from '@/components/auth/AuthModal';
-import { AuthMenu } from '@/components/auth/AuthMenu';
+import { AuthModal } from '@/features/auth/components/AuthModal';
+import { AuthMenu } from '@/features/auth/components/AuthMenu';
 
 export default function Navigation({
   colorScheme,

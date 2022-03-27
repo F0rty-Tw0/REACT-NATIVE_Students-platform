@@ -1,9 +1,13 @@
+//COMPONENTS
 import { View, Pressable } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { AuthButton } from '@/components/auth/AuthButton';
-import { DisplayUserInterface } from '@/models/interfaces/authInterface';
-import { login, logout, register } from '@/redux/actions/authActions';
+import { AuthButton } from '@/features/auth/components/AuthButton';
+//HOOKS
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+//MODELS
+import { DisplayUserInterface } from '@/features/auth/models/interfaces/authInterface';
+//REDUX
+import { login, logout, register } from '@/features/auth/redux/actions/authActions';
 
 export const AuthMenu = () => {
   const navigation = useNavigation();

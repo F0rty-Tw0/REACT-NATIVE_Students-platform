@@ -1,17 +1,22 @@
 import { StyleSheet } from 'react-native';
-import Chat from '@/components/Chat';
+import ChatRoom from '@/components/ChatRoom';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/shared/Themed';
+import { View } from '@/components/shared/Themed';
 import { RootTabScreenProps } from '@/types/appTypes';
 
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+export default function TabOneScreen({
+  navigation,
+}: RootTabScreenProps<'TabOne'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <Chat />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <ChatRoom />
+      <View
+        style={styles.separator}
+        lightColor='#eee'
+        darkColor='rgba(255,255,255,0.1)'
+      />
+      <EditScreenInfo path='/screens/TabOneScreen.tsx' />
     </View>
   );
 }
@@ -21,10 +26,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
   },
   separator: {
     marginVertical: 30,

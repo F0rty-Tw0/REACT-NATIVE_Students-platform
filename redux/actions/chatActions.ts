@@ -1,28 +1,21 @@
+import { ChatInterface } from '@/models/interfaces/chatInterface';
 import {
-  ADD_MESSAGE,
-  DELETE_MESSAGE,
-  EDIT_MESSAGE,
-  LIKE_MESSAGE,
+  CREATE_CHAT_ROOM,
+  DELETE_CHAT_ROOM,
+  SET_CURRENT_CHAT,
 } from '@/redux/types';
 
-import { MessageInterface } from '@/models/interfaces/messageInterface';
-
-export const addMessage = (chatId: number, text: string) => ({
-  type: ADD_MESSAGE,
-  payload: { chatId, text },
+export const createChatRoom = (chatRoomName: string) => ({
+  type: CREATE_CHAT_ROOM,
+  payload: { name: chatRoomName },
 });
 
-export const editMessage = (message: MessageInterface) => ({
-  type: EDIT_MESSAGE,
-  payload: message,
+export const deleteChatRoom = (chatRoomId: number) => ({
+  type: DELETE_CHAT_ROOM,
+  payload: chatRoomId,
 });
 
-export const deleteMessage = (message: MessageInterface) => ({
-  type: DELETE_MESSAGE,
-  payload: message,
-});
-
-export const likeMessage = (message: MessageInterface) => ({
-  type: LIKE_MESSAGE,
-  payload: message,
+export const setCurrentChat = (chatRoom: ChatInterface) => ({
+  type: SET_CURRENT_CHAT,
+  payload: chatRoom,
 });
