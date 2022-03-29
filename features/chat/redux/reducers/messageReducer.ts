@@ -43,7 +43,7 @@ export const messageReducer = (
       );
 
     case SET_CURRENT_CHAT_MESSAGES:
-      return action.payload;
+      return action.payload || [];
     default:
       return state;
   }
