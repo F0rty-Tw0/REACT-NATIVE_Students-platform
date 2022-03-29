@@ -1,16 +1,15 @@
 import { StyleSheet } from 'react-native';
-import ChatRoom from '@/components/ChatRoom';
+import ChatRoom from '@/features/chat/components/ChatRoom';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { View } from '@/components/shared/Themed';
-import { RootTabScreenProps } from '@/types/appTypes';
+import { useAppSelector } from '@/hooks/redux-hooks/useAppSelector';
 
-export default function TabOneScreen({
-  navigation,
-}: RootTabScreenProps<'TabOne'>) {
+export default function TabOneScreen() {
+  const user = useAppSelector((state) => state.authReducer.user);
   return (
     <View style={styles.container}>
-      <ChatRoom />
+      {!user && <ChatRoom />}
       <View
         style={styles.separator}
         lightColor='#eee'

@@ -6,16 +6,15 @@ import {
   addMessage,
   deleteMessage,
   likeMessage,
-} from '@/redux/actions/messageActions';
-import { MessageInterface } from '@/models/interfaces/messageInterface';
+} from '@/features/chat/redux/actions/messageActions';
+import { MessageInterface } from '@/features/chat/models/interfaces/messageInterface';
 
 export default function Chat({ selectedChatId }: { selectedChatId: number }) {
-  selectedChatId = 0;
   const chatMessages: MessageInterface[] = useAppSelector(
-    (state) => state.messageReducer[0]?.messages
+    (state) => state.messageReducer
   );
   const [message, setMessage] = useState('');
-
+console.log(selectedChatId)
   const dispatch = useAppDispatcher();
   return (
     <View style={styles.container}>

@@ -1,12 +1,14 @@
 //COMPONENTS
 import { StyleSheet, Button, TextInput } from 'react-native';
 import { View } from '@/components/shared/Themed';
+//MODELS
+import { AuthCredentialsInterface } from '@/features/auth/models/interfaces/authInterface';
 //HOOKS
 import { useState } from 'react';
 
 interface FormProps {
   title: string;
-  handlePress: (email: string, password: string) => void;
+  handlePress: ({ email, password }: AuthCredentialsInterface) => void;
 }
 
 export const AuthForm = ({ title, handlePress }: FormProps) => {
@@ -31,7 +33,7 @@ export const AuthForm = ({ title, handlePress }: FormProps) => {
       <Button
         disabled={password.length < 3}
         title={title}
-        onPress={() => handlePress(email, password)}
+        onPress={() => handlePress({ email, password })}
       />
     </View>
   );

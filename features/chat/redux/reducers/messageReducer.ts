@@ -3,12 +3,13 @@ import {
   EDIT_MESSAGE,
   LIKE_MESSAGE,
   DELETE_MESSAGE,
-} from '@/redux/types';
+  SET_CURRENT_CHAT_MESSAGES,
+} from '@/features/chat/redux/types';
 
-import { MessageInterface } from '@/models/interfaces/messageInterface';
-import { ChatInterface } from '@/models/interfaces/chatInterface';
+import { MessageInterface } from '@/features/chat/models/interfaces/messageInterface';
+import { ChatInterface } from '@/features/chat/models/interfaces/chatInterface';
 
-const initialState: ChatInterface[] = [];
+const initialState: MessageInterface[] = [];
 
 interface ActionInterface {
   type: string;
@@ -19,28 +20,30 @@ export const messageReducer = (
   state = initialState,
   action: ActionInterface = { type: '', payload: {} as MessageInterface }
 ) => {
-  const selectedChatId = action.payload?.chatId;
+  const lastMessageId: number =
+    state.length > 0 ? state[state.length - 1].messageId : 0;
   switch (action.type) {
     case ADD_MESSAGE:
-      return state.map((chat) => {
-        return _addMessageToChat(chat, action.payload, selectedChatId);
-      });
+      return [...state, { ...action.payload, messageId: lastMessageId + 1 }];
 
     case DELETE_MESSAGE:
-      return state.map((chat: ChatInterface) => {
-        return _deleteMessageFromChat(chat, action.payload, selectedChatId);
-      });
+      return state.filter(
+        (message: MessageInterface) =>
+          message.messageId !== action.payload.messageId
+      );
 
     case LIKE_MESSAGE:
-      return state.map((chat: ChatInterface) => {
-        return _likeMessageFromChat(chat, action.payload, selectedChatId);
-      });
+      return state.map((message: MessageInterface) =>
+        message.messageId === action.payload.messageId
+          ? {
+              ...message,
+              isFavorite: !message.isFavorite,
+            }
+          : message
+      );
 
-    case EDIT_MESSAGE:
-      return state.map((chat: ChatInterface) => {
-        return _editMessageFromChat(chat, action.payload, selectedChatId);
-      });
-
+    case SET_CURRENT_CHAT_MESSAGES:
+      return action.payload;
     default:
       return state;
   }

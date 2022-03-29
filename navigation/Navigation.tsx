@@ -57,8 +57,6 @@ function RootNavigator() {
       />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name='Login' component={AuthModal} />
-      </Stack.Group>
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name='Register' component={AuthModal} />
       </Stack.Group>
     </Stack.Navigator>

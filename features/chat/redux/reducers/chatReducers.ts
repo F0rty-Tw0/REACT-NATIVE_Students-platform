@@ -2,15 +2,17 @@ import {
   CREATE_CHAT_ROOM,
   DELETE_CHAT_ROOM,
   SET_CURRENT_CHAT,
-} from '@/redux/types';
+} from '@/features/chat/redux/types';
 
-import { ChatInterface } from '@/models/interfaces/chatInterface';
+import { ChatInterface } from '@/features/chat/models/interfaces/chatInterface';
 
-const initialState: ChatInterface = {
-  chatId: 0,
-  name: 'General',
-  messages: [],
-};
+const initialState: ChatInterface[] = [
+  {
+    chatId: 0,
+    name: 'General',
+    messages: [],
+  },
+];
 
 interface ActionInterface {
   type: string;
@@ -21,9 +23,10 @@ export const chatReducers = (
   state = initialState,
   action: ActionInterface = { type: '', payload: {} as ChatInterface }
 ) => {
+  const newId = state.length > 0 ? state[state.length - 1].chatId : 0;
   switch (action.type) {
     case CREATE_CHAT_ROOM:
-      return { ...action.payload };
+      return [...state, { ...action.payload, chatId: newId+1 }];
 
     case DELETE_CHAT_ROOM:
       return { ...action.payload };

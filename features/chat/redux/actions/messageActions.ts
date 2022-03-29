@@ -4,9 +4,9 @@ import {
   EDIT_MESSAGE,
   LIKE_MESSAGE,
   SET_CURRENT_CHAT_MESSAGES
-} from '@/redux/types';
+} from '@/features/chat/redux/types';
 
-import { MessageInterface } from '@/models/interfaces/messageInterface';
+import { MessageInterface } from '@/features/chat/models/interfaces/messageInterface';
 
 export const addMessage = (chatId: number, text: string) => ({
   type: ADD_MESSAGE,

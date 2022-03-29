@@ -1,39 +1,40 @@
-import { SET_USER, LOGOUT } from '@/features/auth/redux/types';
-import { AuthUserInterface } from 'features/auth/models/interfaces/authInterface';
-import { Dispatch } from 'redux';
-const initialState = {
-  user: null,
+//MODELS
+import { AuthUserInterface } from '@/features/auth/models/interfaces/authInterface';
+//REDUX
+import {
+  LOGIN_SUCCESS,
+  LOGIN_LOADING,
+  LOGIN_FAILURE,
+  LOGOUT,
+  AuthDispatchTypes,
+} from '@/features/auth/redux/types';
+
+interface InitialStateInterface {
+  loading: boolean;
+  isLoggedIn: boolean;
+  user?: AuthUserInterface;
+}
+const initialState: InitialStateInterface = {
+  loading: false,
+  isLoggedIn: false,
 };
 
-interface ActionInterface {
-  type: string;
-  payload: AuthUserInterface;
-}
-
 export const authReducer = (
-  state = initialState,
-  action: ActionInterface = {
-    type: '',
-    payload: {} as AuthUserInterface,
-  }
-) => {
+  state: InitialStateInterface = initialState,
+  action: AuthDispatchTypes
+): InitialStateInterface => {
   switch (action.type) {
-    case SET_USER:
+    case LOGIN_SUCCESS:
       return {
         ...state,
         user: action.payload,
+        isLoggedIn: true,
       };
     case LOGOUT:
       return {
         ...state,
-        user: null,
       };
     default:
       return state;
   }
 };
-
-// const login = () => async (_dispatch: Dispatch, getState) => {
-//   dispatch({})
-//   const { user } = await signInWithEmailAndPassword(auth, email, password);
-// };
