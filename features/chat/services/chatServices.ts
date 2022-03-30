@@ -2,20 +2,22 @@ import { chatRef } from '@/firebase';
 import { child, get, push, set } from 'firebase/database';
 import { ChatInterface } from '@/features/chat/models/interfaces/chatInterface';
 
-export const createDBChatRoom = async (chatRoomName: string) => {
-  const newPostKey = push(chatRef).key || '';
-  if (newPostKey) {
-    await set(child(chatRef, `/${newPostKey}`), chatRoomName);
+export const createDBChatRoom = async (
+  chatRoomName: string
+): Promise<ChatInterface> => {
+  const newChatId = push(chatRef).key || '';
+  if (newChatId) {
+    await set(child(chatRef, `/${newChatId}`), { name: chatRoomName });
   }
-  return { name: chatRoomName, chatId: newPostKey } as ChatInterface;
+  return { name: chatRoomName, chatId: newChatId } as ChatInterface;
 };
 
-export const getAllChatRooms = async () => {
+export const getAllChatRooms = async (): Promise<ChatInterface[]> => {
   const dataSnapshot = await get(chatRef);
   const chatRooms = dataSnapshot.val();
   const allChatRooms: ChatInterface[] = [];
-  for (const [key, value] of Object.entries(chatRooms)) {
-    allChatRooms.push({ ...(value as ChatInterface), chatId: key });
+  for (const [chatId, chat] of Object.entries(chatRooms)) {
+    allChatRooms.push({ ...(chat as ChatInterface), chatId });
   }
   console.log(allChatRooms);
   return allChatRooms;

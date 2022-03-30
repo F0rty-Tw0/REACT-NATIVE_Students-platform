@@ -1,34 +1,28 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, Button, TextInput } from 'react-native';
-import { useAppDispatcher } from '@/hooks/redux-hooks/useAppDispatcher';
 import { useAppSelector } from '@/hooks/redux-hooks/useAppSelector';
-import {
-  addMessage,
-  deleteMessage,
-  likeMessage,
-} from '@/features/chat/redux/actions/messageActions';
 import { MessageInterface } from '@/features/chat/models/interfaces/messageInterface';
+import { useDispatch } from 'react-redux';
+import { addAndGetNewMessage } from '@/features/chat/redux/actions/messageActions';
 
 export default function Chat({ selectedChatId }: { selectedChatId: string }) {
-  const chatMessages: MessageInterface[] = useAppSelector(
-    (state) => state.messageReducer
-  );
+  const dispatch = useDispatch();
   const [message, setMessage] = useState('');
-console.log(selectedChatId)
-  const dispatch = useAppDispatcher();
+
+  const chatMessages: MessageInterface[] = useAppSelector((state) => {
+    return state.messageReducers;
+  });
+
   return (
     <View style={styles.container}>
       {chatMessages?.map((chatMessage: MessageInterface) => (
         <View key={chatMessage.messageId}>
           <Text>{chatMessage.text}</Text>
           <Text>{chatMessage.isFavorite ? '<3' : ''}</Text>
-          <Button
-            title='Delete'
-            onPress={() => dispatch(deleteMessage(chatMessage))}
-          />
+          <Button title='Delete' onPress={() => console.log(chatMessage)} />
           <Button
             title={chatMessage.isFavorite ? 'Dislike' : 'Like'}
-            onPress={() => dispatch(likeMessage(chatMessage))}
+            onPress={() => console.log(chatMessage)}
           />
         </View>
       ))}
@@ -43,7 +37,7 @@ console.log(selectedChatId)
         title='Add'
         onPress={() => {
           setMessage('');
-          dispatch(addMessage(selectedChatId, message));
+          dispatch(addAndGetNewMessage(selectedChatId, message));
         }}
       />
     </View>

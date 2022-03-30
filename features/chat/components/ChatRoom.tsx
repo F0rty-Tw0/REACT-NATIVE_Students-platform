@@ -1,9 +1,8 @@
 import { useAppDispatcher } from '@/hooks/redux-hooks/useAppDispatcher';
 import {
   createAndGetChatRoom,
-  createChatRoom,
   getAllChatRoomsAction,
-  setCurrentChat,
+  setCurrentChatRoom,
 } from '@/features/chat/redux/actions/chatActions';
 import { setCurrentChatMessages } from '@/features/chat/redux/actions/messageActions';
 import { useEffect, useState } from 'react';
@@ -15,27 +14,27 @@ import Chat from '@/features/chat/components/Chat';
 import { useDispatch } from 'react-redux';
 export default function ChatRoom() {
   const [name, setName] = useState('');
-  const [selectedChatIndex, setSelectedChatIndex] = useState();
   const appDispatch = useAppDispatcher();
   const dispatch = useDispatch();
   const chatRooms: ChatInterface[] = useAppSelector(
     (state) => state.chatReducers
   );
-  const currentChatRoom: ChatInterface = useAppSelector((state) => state.currentChatReducers) 
+  const currentChatRoom: ChatInterface = useAppSelector(
+    (state) => state.currentChatReducers
+  );
 
   useEffect((): void => {
     dispatch(getAllChatRoomsAction());
   }, []);
 
-  return !selectedChatIndex ? (
+  return !currentChatRoom && chatRooms? (
     <View>
       <Text>Select from existing Chat Rooms</Text>
       <Picker
-        selectedValue={selectedChatIndex}
+        selectedValue={currentChatRoom || ''}
         onValueChange={(chatIndex) => {
-          const selectedChatRoom = chatRooms[chatIndex || 0];
-          console.log(chatIndex);
-          setSelectedChatIndex(chatIndex);
+          const selectedChatRoom = chatRooms[chatIndex];
+          appDispatch(setCurrentChatRoom(selectedChatRoom));
           appDispatch(setCurrentChatMessages(selectedChatRoom.messages));
         }}
       >
@@ -64,7 +63,7 @@ export default function ChatRoom() {
     </View>
   ) : (
     <View>
-      <Chat selectedChatId={chatRooms[selectedChatIndex]?.chatId} />
+      <Chat selectedChatId={currentChatRoom?.chatId} />
     </View>
   );
 }

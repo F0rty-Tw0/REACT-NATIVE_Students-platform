@@ -1,20 +1,11 @@
 import {
-  CREATE_CHAT_ROOM,
   CREATE_CHAT_ROOM_SUCCESS,
-  DELETE_CHAT_ROOM,
   GET_ALL_CHAT_ROOMS_SUCCESS,
-  SET_CURRENT_CHAT,
-} from '@/features/chat/redux/types';
+} from '@/features/chat/redux/types/chatRoomTypes';
 
 import { ChatInterface } from '@/features/chat/models/interfaces/chatInterface';
 
-const initialState: ChatInterface[] = [
-  {
-    chatId: 'test',
-    name: 'General',
-    messages: [],
-  },
-];
+const initialState: ChatInterface[] | null = null;
 
 interface ActionInterface {
   type: string;
@@ -32,10 +23,10 @@ export const chatReducers = (
     case GET_ALL_CHAT_ROOMS_SUCCESS:
       return action.payload;
     case CREATE_CHAT_ROOM_SUCCESS:
-      return [...state, action.payload];
-
-    case DELETE_CHAT_ROOM:
-      return { ...action.payload };
+      if (state) return [...state, action.payload];
+      return state;
+    // case DELETE_CHAT_ROOM:
+    //   return { ...action.payload };
 
     default:
       return state;

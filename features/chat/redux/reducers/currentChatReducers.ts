@@ -1,4 +1,4 @@
-import { SET_CURRENT_CHAT } from '@/features/chat/redux/types';
+import { SET_CURRENT_CHAT_ROOM } from '@/features/chat/redux/types/sharedTypes';
 
 import { ChatInterface } from '@/features/chat/models/interfaces/chatInterface';
 
@@ -16,8 +16,10 @@ export const currentChatReducers = (
     payload: {} as ChatInterface,
   }
 ) => {
+
   switch (action.type) {
-    case SET_CURRENT_CHAT:
+    case SET_CURRENT_CHAT_ROOM:
+  console.log(action.payload)
       return action.payload;
     default:
       return state;

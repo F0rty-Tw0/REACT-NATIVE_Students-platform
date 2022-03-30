@@ -1,39 +1,32 @@
 import { ChatInterface } from '@/features/chat/models/interfaces/chatInterface';
 import {
   ChatDispatchTypes,
-  CREATE_CHAT_ROOM,
+  SET_CURRENT_CHAT_ROOM_MESSAGES,
+} from '@/features/chat/redux/types/sharedTypes';
+import {
+  ChatRoomDispatchTypes,
+  SET_CURRENT_CHAT_ROOM,
   CREATE_CHAT_ROOM_LOADING,
   CREATE_CHAT_ROOM_SUCCESS,
-  DELETE_CHAT_ROOM,
+  CREATE_CHAT_ROOM_FAILURE,
   GET_ALL_CHAT_ROOMS_FAILURE,
   GET_ALL_CHAT_ROOMS_LOADING,
   GET_ALL_CHAT_ROOMS_SUCCESS,
-  SET_CURRENT_CHAT,
-  SET_CURRENT_CHAT_MESSAGES,
-} from '@/features/chat/redux/types';
+} from '@/features/chat/redux/types/chatRoomTypes';
 import { Dispatch } from 'redux';
 import {
   createDBChatRoom,
   getAllChatRooms,
 } from '@/features/chat/services/chatServices';
 
-export const createChatRoom = (chatRoomName: string) => ({
-  type: CREATE_CHAT_ROOM,
-  payload: { name: chatRoomName },
-});
-
-export const deleteChatRoom = (chatRoomId: number) => ({
-  type: DELETE_CHAT_ROOM,
-  payload: chatRoomId,
-});
-
-export const setCurrentChat = (chatRoom: ChatInterface) => ({
-  type: SET_CURRENT_CHAT,
+export const setCurrentChatRoom = (chatRoom: ChatInterface) => ({
+  type: SET_CURRENT_CHAT_ROOM,
   payload: chatRoom,
 });
 
 export const getAllChatRoomsAction =
-  () => async (dispatch: Dispatch<ChatDispatchTypes>) => {
+  () =>
+  async (dispatch: Dispatch<ChatRoomDispatchTypes>): Promise<void> => {
     try {
       dispatch({ type: GET_ALL_CHAT_ROOMS_LOADING });
       const chatRooms = await getAllChatRooms();
@@ -45,18 +38,19 @@ export const getAllChatRoomsAction =
   };
 
 export const createAndGetChatRoom =
-  (chatRoomName: string) => async (dispatch: Dispatch<ChatDispatchTypes>) => {
+  (chatRoomName: string) =>
+  async (dispatch: Dispatch<ChatRoomDispatchTypes | ChatDispatchTypes>): Promise<void> => {
     try {
       dispatch({ type: CREATE_CHAT_ROOM_LOADING });
       const newChatRoom = await createDBChatRoom(chatRoomName);
       dispatch({ type: CREATE_CHAT_ROOM_SUCCESS, payload: newChatRoom });
-      dispatch({ type: SET_CURRENT_CHAT, payload: newChatRoom });
+      dispatch({ type: SET_CURRENT_CHAT_ROOM, payload: newChatRoom });
       dispatch({
-        type: SET_CURRENT_CHAT_MESSAGES,
+        type: SET_CURRENT_CHAT_ROOM_MESSAGES,
         payload: newChatRoom.messages,
       });
     } catch (error) {
       console.log(error);
-      dispatch({ type: GET_ALL_CHAT_ROOMS_FAILURE });
+      dispatch({ type: CREATE_CHAT_ROOM_FAILURE });
     }
   };
