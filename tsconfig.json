@@ -5,6 +5,7 @@
     "jsx": "react-native",
     "baseUrl": ".",
     "paths": {
+      "@/*": ["*"],
       "@/components/*": ["components/*"],
       "@/constants/*": ["constants/*"],
       "@/hooks/*": ["hooks/*"],

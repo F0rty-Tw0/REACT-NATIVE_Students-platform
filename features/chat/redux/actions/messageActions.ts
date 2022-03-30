@@ -8,7 +8,7 @@ import {
 
 import { MessageInterface } from '@/features/chat/models/interfaces/messageInterface';
 
-export const addMessage = (chatId: number, text: string) => ({
+export const addMessage = (chatId: string, text: string) => ({
   type: ADD_MESSAGE,
   payload: { chatId, text },
 });

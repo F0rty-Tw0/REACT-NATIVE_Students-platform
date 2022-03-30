@@ -1,33 +1,42 @@
 import { useAppDispatcher } from '@/hooks/redux-hooks/useAppDispatcher';
 import {
+  createAndGetChatRoom,
   createChatRoom,
+  getAllChatRoomsAction,
   setCurrentChat,
 } from '@/features/chat/redux/actions/chatActions';
 import { setCurrentChatMessages } from '@/features/chat/redux/actions/messageActions';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Button, TextInput } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useAppSelector } from '@/hooks/redux-hooks/useAppSelector';
 import { ChatInterface } from '@/features/chat/models/interfaces/chatInterface';
 import Chat from '@/features/chat/components/Chat';
-
+import { useDispatch } from 'react-redux';
 export default function ChatRoom() {
   const [name, setName] = useState('');
   const [selectedChatIndex, setSelectedChatIndex] = useState();
-  const dispatch = useAppDispatcher();
+  const appDispatch = useAppDispatcher();
+  const dispatch = useDispatch();
   const chatRooms: ChatInterface[] = useAppSelector(
     (state) => state.chatReducers
   );
+  const currentChatRoom: ChatInterface = useAppSelector((state) => state.currentChatReducers) 
+
+  useEffect((): void => {
+    dispatch(getAllChatRoomsAction());
+  }, []);
+
   return !selectedChatIndex ? (
     <View>
       <Text>Select from existing Chat Rooms</Text>
       <Picker
         selectedValue={selectedChatIndex}
         onValueChange={(chatIndex) => {
+          const selectedChatRoom = chatRooms[chatIndex || 0];
           console.log(chatIndex);
           setSelectedChatIndex(chatIndex);
-          dispatch(setCurrentChat(chatRooms[chatIndex || 0]));
-          dispatch(setCurrentChatMessages(chatRooms[chatIndex || 0].messages));
+          appDispatch(setCurrentChatMessages(selectedChatRoom.messages));
         }}
       >
         <Picker.Item label='Select a chat' />
@@ -48,7 +57,7 @@ export default function ChatRoom() {
         disabled={name.length === 0}
         title='Create your room'
         onPress={() => {
-          dispatch(createChatRoom(name));
+          dispatch(createAndGetChatRoom(name));
           setName('');
         }}
       />

@@ -9,7 +9,7 @@ import {
 } from '@/features/chat/redux/actions/messageActions';
 import { MessageInterface } from '@/features/chat/models/interfaces/messageInterface';
 
-export default function Chat({ selectedChatId }: { selectedChatId: number }) {
+export default function Chat({ selectedChatId }: { selectedChatId: string }) {
   const chatMessages: MessageInterface[] = useAppSelector(
     (state) => state.messageReducer
   );
