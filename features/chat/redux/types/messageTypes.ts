@@ -26,7 +26,36 @@ export interface AddMessageFailure {
   type: typeof ADD_MESSAGE_FAILURE;
 }
 
+export interface LikeMessageLoading {
+  type: typeof LIKE_MESSAGE_LOADING;
+}
+
+export interface LikeMessageSuccess {
+  type: typeof LIKE_MESSAGE_SUCCESS;
+}
+
+export interface LikeMessageFailure {
+  type: typeof LIKE_MESSAGE_FAILURE;
+}
+
+export interface DeleteMessageLoading {
+  type: typeof DELETE_MESSAGE_LOADING;
+}
+export interface DeleteMessageSuccess {
+  type: typeof DELETE_MESSAGE_SUCCESS;
+}
+
+export interface DeleteMessageFailure {
+  type: typeof DELETE_MESSAGE_FAILURE;
+}
+
 export type MessageDispatchTypes =
   | AddMessageLoading
   | AddMessageSuccess
-  | AddMessageFailure;
+  | AddMessageFailure
+  | LikeMessageLoading
+  | LikeMessageSuccess
+  | LikeMessageFailure
+  | DeleteMessageLoading
+  | DeleteMessageSuccess
+  | DeleteMessageFailure;

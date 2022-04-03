@@ -1,11 +1,20 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { StyleSheet, View, Text, Button, TextInput } from 'react-native';
 import { useAppSelector } from '@/hooks/redux-hooks/useAppSelector';
 import { MessageInterface } from '@/features/chat/models/interfaces/messageInterface';
-import { useDispatch } from 'react-redux';
-import { addAndGetNewMessage } from '@/features/chat/redux/actions/messageActions';
+import {
+  addMessage,
+  toggleLikeMessage,
+  deleteMessage,
+} from '@/features/chat/redux/actions/messageActions';
 
-export default function Chat({ selectedChatId }: { selectedChatId: string }) {
+interface ChatProps {
+  selectedChatId: string;
+  selectedChatName: string;
+}
+
+export default function Chat({ selectedChatId, selectedChatName }: ChatProps) {
   const dispatch = useDispatch();
   const [message, setMessage] = useState('');
 
@@ -15,14 +24,28 @@ export default function Chat({ selectedChatId }: { selectedChatId: string }) {
 
   return (
     <View style={styles.container}>
+      <Text>Chatting in {selectedChatName}</Text>
       {chatMessages?.map((chatMessage: MessageInterface) => (
         <View key={chatMessage.messageId}>
           <Text>{chatMessage.text}</Text>
           <Text>{chatMessage.isFavorite ? '<3' : ''}</Text>
-          <Button title='Delete' onPress={() => console.log(chatMessage)} />
+          <Button
+            title='Delete'
+            onPress={() =>
+              dispatch(deleteMessage(selectedChatId, chatMessage.messageId))
+            }
+          />
           <Button
             title={chatMessage.isFavorite ? 'Dislike' : 'Like'}
-            onPress={() => console.log(chatMessage)}
+            onPress={() =>
+              dispatch(
+                toggleLikeMessage(
+                  selectedChatId,
+                  chatMessage.messageId,
+                  !chatMessage.isFavorite
+                )
+              )
+            }
           />
         </View>
       ))}
@@ -37,7 +60,7 @@ export default function Chat({ selectedChatId }: { selectedChatId: string }) {
         title='Add'
         onPress={() => {
           setMessage('');
-          dispatch(addAndGetNewMessage(selectedChatId, message));
+          dispatch(addMessage(selectedChatId, message));
         }}
       />
     </View>

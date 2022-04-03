@@ -27,7 +27,7 @@ export default function ChatRoom() {
     dispatch(getAllChatRoomsAction());
   }, []);
 
-  return !currentChatRoom && chatRooms? (
+  return !currentChatRoom && chatRooms ? (
     <View>
       <Text>Select from existing Chat Rooms</Text>
       <Picker
@@ -63,7 +63,12 @@ export default function ChatRoom() {
     </View>
   ) : (
     <View>
-      <Chat selectedChatId={currentChatRoom?.chatId} />
+      {currentChatRoom && (
+        <Chat
+          selectedChatId={currentChatRoom.chatId}
+          selectedChatName={currentChatRoom.name}
+        />
+      )}
     </View>
   );
 }
