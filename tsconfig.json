@@ -12,7 +12,8 @@
       "@/navigation/*": ["navigation/*"],
       "@/redux/*": ["redux/*"],
       "@/features/*": ["features/*"],
-      "@/types/*": ["types/*"]
+      "@/types/*": ["types/*"],
+      "@/images/*": ["assets/images/*"]
     }
   }
 }

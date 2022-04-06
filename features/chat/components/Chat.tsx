@@ -19,7 +19,7 @@ export default function Chat({ selectedChatId, selectedChatName }: ChatProps) {
   const [message, setMessage] = useState('');
 
   const chatMessages: MessageInterface[] = useAppSelector((state) => {
-    return state.messageReducers;
+    return state.messageReducer;
   });
 
   return (

@@ -14,7 +14,7 @@ interface ActionInterface {
   payload: MessageInterface;
 }
 
-export const messageReducers = (
+export const messageReducer = (
   state = initialState,
   action: ActionInterface = { type: '', payload: {} as MessageInterface }
 ) => {

@@ -12,7 +12,7 @@ interface ActionInterface {
   payload: ChatInterface | ChatInterface[];
 }
 
-export const chatReducers = (
+export const chatReducer = (
   state = initialState,
   action: ActionInterface = {
     type: '',

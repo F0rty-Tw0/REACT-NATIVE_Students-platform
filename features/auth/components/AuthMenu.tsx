@@ -3,15 +3,19 @@ import { View, Pressable } from 'react-native';
 import { AuthButton } from '@/features/auth/components/AuthButton';
 //HOOKS
 import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 //MODELS
 import { DisplayUserInterface } from '@/features/auth/models/interfaces/authInterface';
+import { logout } from '@/features/auth/redux/actions/authActions';
+import { useAppSelector } from '@/hooks/redux-hooks/useAppSelector';
+import { AuthScreenProp } from '@/features/auth/types/NavigationTypes';
 //REDUX
 
 export const AuthMenu = () => {
-  const navigation = useNavigation();
-  const user: DisplayUserInterface = useSelector(
-    (state: any) => state.authReducer?.user
+  const navigation = useNavigation<AuthScreenProp>();
+  const dispatch = useDispatch();
+  const user: DisplayUserInterface = useAppSelector(
+    (state) => state.authReducer
   );
   return !user ? (
     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -39,7 +43,8 @@ export const AuthMenu = () => {
   ) : (
     <Pressable
       onPress={() => {
-        navigation.navigate('Root');
+        dispatch(logout());
+        navigation.navigate('Core');
       }}
       style={({ pressed }) => ({
         opacity: pressed ? 0.5 : 1,

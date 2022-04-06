@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native';
 import ChatRoom from '@/features/chat/components/ChatRoom';
 
-import EditScreenInfo from '@/features/core/components/EditScreenInfo';
+import EditScreenInfo from '@/features/shared/components/EditScreenInfo';
 import { View, Text } from '@/features/shared/components/Themed';
 import { useAppSelector } from '@/hooks/redux-hooks/useAppSelector';
 
-export default function HomeScreen() {
+export const HomeScreen = () => {
   const user = useAppSelector((state) => state.authReducer.user);
   return (
     <View style={styles.container}>
@@ -19,7 +19,7 @@ export default function HomeScreen() {
       <EditScreenInfo path='/screens/HomeScreen.tsx' />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

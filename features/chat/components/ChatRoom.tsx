@@ -17,10 +17,10 @@ export default function ChatRoom() {
   const appDispatch = useAppDispatcher();
   const dispatch = useDispatch();
   const chatRooms: ChatInterface[] = useAppSelector(
-    (state) => state.chatReducers
+    (state) => state.chatReducer
   );
   const currentChatRoom: ChatInterface = useAppSelector(
-    (state) => state.currentChatReducers
+    (state) => state.currentChatReducer
   );
 
   useEffect((): void => {

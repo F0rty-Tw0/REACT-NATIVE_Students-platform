@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '@/features/core/components/EditScreenInfo';
+import EditScreenInfo from '@/features/shared/components/EditScreenInfo';
 import { Text, View } from '@/features/shared/components/Themed';
 
 export default function ProfileScreen() {

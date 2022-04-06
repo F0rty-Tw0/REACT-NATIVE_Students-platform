@@ -4,34 +4,52 @@
  */
 
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
+import {
+  CompositeScreenProps,
+  NavigatorScreenParams,
+} from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
+    interface AppParamList extends CoreStackParamList {}
   }
 }
 
-export type RootStackParamList = {
-  Root: NavigatorScreenParams<RootTabParamList> | undefined;
-  Modal: undefined;
+export type CoreStackParamList = {
+  Core: NavigatorScreenParams<CoreTabParamList> | undefined;
+  Home: undefined;
+  Auth: undefined;
+  Discover: undefined;
+  Events: undefined;
+  Organizations: undefined;
+  Chat: undefined;
+  Posts: undefined;
+  Splash: undefined;
+  Onboarding: undefined;
+  PreOnboarding: undefined;
+  Menu: undefined;
+  Profile: undefined;
   Login: undefined;
   Register: undefined;
+  ResetPassword: undefined;
+  Notifications: undefined;
+  Verification: undefined;
   NotFound: undefined;
 };
 
-export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
-  RootStackParamList,
-  Screen
->;
+export type CoreStackScreenProps<Screen extends keyof CoreStackParamList> =
+  NativeStackScreenProps<CoreStackParamList, Screen>;
 
-export type RootTabParamList = {
-  home: undefined;
-  profile: undefined;
+export type CoreTabParamList = {
+  Home: undefined;
+  Profile: undefined;
+  Menu: undefined;
+  Chat: undefined;
 };
 
-export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
-  BottomTabScreenProps<RootTabParamList, Screen>,
-  NativeStackScreenProps<RootStackParamList>
->;
+export type CoreTabScreenProps<Screen extends keyof CoreTabParamList> =
+  CompositeScreenProps<
+    BottomTabScreenProps<CoreTabParamList, Screen>,
+    NativeStackScreenProps<CoreStackParamList>
+  >;

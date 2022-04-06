@@ -14,6 +14,7 @@ module.exports = function (api) {
           allowUndefined: true,
         },
       ],
+      ['inline-react-svg'],
       [
         require.resolve('babel-plugin-module-resolver'),
         {
@@ -26,6 +27,7 @@ module.exports = function (api) {
             '@/redux': './redux',
             '@/features': './features',
             '@/types': './types',
+            '@/images': './assets/images',
           },
         },
       ],
