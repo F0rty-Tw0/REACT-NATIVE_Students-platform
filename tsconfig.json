@@ -6,13 +6,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["*"],
-      "@/components/*": ["components/*"],
-      "@/constants/*": ["constants/*"],
+      "@/constants/*": ["features/shared/constants/*"],
       "@/hooks/*": ["hooks/*"],
       "@/models/*": ["models/*"],
       "@/navigation/*": ["navigation/*"],
       "@/redux/*": ["redux/*"],
-      "@/screens/*": ["screens/*"],
       "@/features/*": ["features/*"],
       "@/types/*": ["types/*"]
     }

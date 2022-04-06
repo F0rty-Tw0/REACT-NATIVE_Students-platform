@@ -1,8 +1,8 @@
 //COMPONENTS
-import { View } from '@/components/shared/Themed';
-import { AuthForm } from '@/features/auth/components/AuthForm';
-import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { View } from '@/features/shared/components/Themed';
+import { AuthForm } from '@/features/auth/components/AuthForm';
 //HOOKS
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';

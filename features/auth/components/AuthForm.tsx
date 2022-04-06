@@ -1,6 +1,6 @@
 //COMPONENTS
 import { StyleSheet, Button, TextInput } from 'react-native';
-import { View } from '@/components/shared/Themed';
+import { View } from '@/features/shared/components/Themed';
 //MODELS
 import { AuthCredentialsInterface } from '@/features/auth/models/interfaces/authInterface';
 //HOOKS

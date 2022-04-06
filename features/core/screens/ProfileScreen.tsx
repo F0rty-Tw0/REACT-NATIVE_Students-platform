@@ -1,21 +1,18 @@
 import { StyleSheet } from 'react-native';
-import ChatRoom from '@/features/chat/components/ChatRoom';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { View } from '@/components/shared/Themed';
-import { useAppSelector } from '@/hooks/redux-hooks/useAppSelector';
+import EditScreenInfo from '@/features/core/components/EditScreenInfo';
+import { Text, View } from '@/features/shared/components/Themed';
 
-export default function TabOneScreen() {
-  const user = useAppSelector((state) => state.authReducer.user);
+export default function ProfileScreen() {
   return (
     <View style={styles.container}>
-      {!user && <ChatRoom />}
+      <Text style={styles.title}>Profile</Text>
       <View
         style={styles.separator}
         lightColor='#eee'
         darkColor='rgba(255,255,255,0.1)'
       />
-      <EditScreenInfo path='/screens/TabOneScreen.tsx' />
+      <EditScreenInfo path='/screens/ProfileScreen.tsx' />
     </View>
   );
 }
@@ -25,6 +22,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   separator: {
     marginVertical: 30,

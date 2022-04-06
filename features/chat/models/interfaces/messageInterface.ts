@@ -3,4 +3,6 @@ export interface MessageInterface {
   messageId: string;
   text: string;
   isFavorite: boolean;
+  userId: string;
+  userEmail: string;
 }

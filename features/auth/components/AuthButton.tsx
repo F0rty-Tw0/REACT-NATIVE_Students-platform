@@ -1,5 +1,5 @@
 //COMPONENTS
-import { MonoText } from '@/components/shared/StyledText';
+import { MonoText } from '@/features/shared/components/StyledText';
 
 interface ButtonProps {
   title: string;

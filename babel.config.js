@@ -20,13 +20,10 @@ module.exports = function (api) {
           root: '.',
           alias: {
             '@': './',
-            '@/components': './components',
-            '@/constants': './constants',
             '@/hooks': './hooks',
             '@/models': './models',
             '@/navigation': './navigation',
             '@/redux': './redux',
-            '@/screens': './screens',
             '@/features': './features',
             '@/types': './types',
           },

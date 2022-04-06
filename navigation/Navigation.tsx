@@ -14,12 +14,12 @@ import {
   RootTabParamList,
   RootTabScreenProps,
 } from '@/types/appTypes';
-import Colors from '@/constants/Colors';
+import Colors from '@/features/shared/constants/Colors';
 import LinkingConfiguration from '@/navigation/LinkingConfiguration';
 import useColorScheme from '@/hooks/useColorScheme';
-import NotFoundScreen from '@/screens/NotFoundScreen';
-import TabOneScreen from '@/screens/TabOneScreen';
-import TabTwoScreen from '@/screens/TabTwoScreen';
+import NotFoundScreen from '@/features/core/screens/NotFoundScreen';
+import HomeScreen from '@/features/core/screens/HomeScreen';
+import ProfileScreen from '@/features/core/screens/ProfileScreen';
 import { AuthModal } from '@/features/auth/components/AuthModal';
 import { AuthMenu } from '@/features/auth/components/AuthMenu';
 
@@ -72,26 +72,26 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName='TabOne'
+      initialRouteName='home'
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}
     >
       <BottomTab.Screen
-        name='TabOne'
-        component={TabOneScreen}
+        name='home'
+        component={HomeScreen}
         options={() => ({
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name='code' color={color} />,
+          title: 'Home',
+          tabBarIcon: ({ color }) => <TabBarIcon name='home' color={color} />,
           headerRight: () => <AuthMenu />,
         })}
       />
       <BottomTab.Screen
-        name='TabTwo'
-        component={TabTwoScreen}
+        name='profile'
+        component={ProfileScreen}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name='code' color={color} />,
+          title: 'Profile',
+          tabBarIcon: ({ color }) => <TabBarIcon name='user' color={color} />,
         }}
       />
     </BottomTab.Navigator>
