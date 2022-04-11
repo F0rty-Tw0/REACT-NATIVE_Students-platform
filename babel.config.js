@@ -20,14 +20,10 @@ module.exports = function (api) {
         {
           root: '.',
           alias: {
-            '@': './',
-            '@/hooks': './hooks',
-            '@/models': './models',
-            '@/navigation': './navigation',
-            '@/redux': './redux',
-            '@/features': './features',
-            '@/types': './types',
-            '@/images': './assets/images',
+            '@app': './app/src',
+            '@libs': './app/libs',
+            '@images': './app/assets/images',
+            '@styles': './lib/shared/styles',
           },
         },
       ],

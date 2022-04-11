@@ -5,15 +5,10 @@
     "jsx": "react-native",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["*"],
-      "@/constants/*": ["features/shared/constants/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/models/*": ["models/*"],
-      "@/navigation/*": ["navigation/*"],
-      "@/redux/*": ["redux/*"],
-      "@/features/*": ["features/*"],
-      "@/types/*": ["types/*"],
-      "@/images/*": ["assets/images/*"]
+      "@libs/*": ["app/libs/*"],
+      "@app/*": ["app/src/*"],
+      "@styles/*": ["app/libs/shared/styles/*"],
+      "@images/*": ["app/assets/images/*"]
     }
   }
 }
