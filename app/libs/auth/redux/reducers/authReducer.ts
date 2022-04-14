@@ -1,6 +1,5 @@
-//MODELS
-import { AuthUserInterface } from '@libs/auth/models/interfaces/authInterface';
-//REDUX
+// MODELS
+import { AuthStateInterface as InitialStateInterface } from '@libs/auth/models/interfaces/authInterface';
 import {
   AuthDispatchTypes,
   CLEAN_AUTH_ERRORS,
@@ -13,12 +12,6 @@ import {
   REGISTER_LOADING,
 } from '@libs/auth/redux/authStoreTypes';
 
-interface InitialStateInterface {
-  loading: boolean;
-  isLoggedIn: boolean;
-  error: string;
-  user: AuthUserInterface | null;
-}
 const initialState: InitialStateInterface = {
   user: null,
   loading: false,
@@ -38,7 +31,7 @@ export const authReducer = (
     case REGISTER_SUCCESS:
       return {
         ...state,
-        user: action.payload,
+        user: action.user,
         loading: false,
         isLoggedIn: true,
       };
@@ -46,7 +39,7 @@ export const authReducer = (
     case REGISTER_FAILURE:
       return {
         ...state,
-        error: action.payload,
+        error: action.error,
         loading: false,
       };
     case CLEAN_AUTH_ERRORS:

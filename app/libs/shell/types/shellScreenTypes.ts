@@ -9,16 +9,17 @@ import { AuthScreenParamList } from '@libs/auth/types/authScreenTypes';
 
 export type ShellStackParamList = {
   NotFound: undefined;
+  Splash: undefined;
   Shell: NavigatorScreenParams<ShellTabParamList> | undefined;
-  Auth: NavigatorScreenParams<AuthScreenParamList> | undefined;
-  // Home: undefined;
+  Auth: undefined;
+  Home: undefined;
+  Onboarding: undefined;
   // Discover: undefined;
   // Events: undefined;
   // Organizations: undefined;
   // Chat: undefined;
   // Posts: undefined;
   // Splash: undefined;
-  // Onboarding: undefined;
   // PreOnboarding: undefined;
   // Menu: undefined;
   // Profile: undefined;
@@ -42,4 +43,3 @@ export type ShellTabScreenProps<Screen extends keyof ShellTabParamList> =
     BottomTabScreenProps<ShellTabParamList, Screen>,
     NativeStackScreenProps<ShellStackParamList>
   >;
-

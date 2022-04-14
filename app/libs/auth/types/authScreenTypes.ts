@@ -7,6 +7,5 @@ export type AuthScreenProp = NativeStackNavigationProp<
 >;
 
 export type AuthScreenParamList = {
-  Login: undefined;
-  Register: undefined;
+  Auth: undefined;
 };

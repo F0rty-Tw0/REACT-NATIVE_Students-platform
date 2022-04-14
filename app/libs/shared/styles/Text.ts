@@ -10,7 +10,6 @@ export const textStyle = StyleSheet.create({
     color: actionBlueDark,
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 20,
   },
   subtext: {
     color: actionBlue,
@@ -40,5 +39,17 @@ export const textStyle = StyleSheet.create({
   },
   textAlignedTop: {
     textAlignVertical: 'top',
+  },
+  splashByText: {
+    fontSize: 24,
+    color: '#707070',
+    marginTop: 90,
+  },
+  inputLabelText: {
+    color: actionBlueDark,
+    textTransform: 'uppercase',
+    fontSize: 12,
+    fontWeight: 'bold',
+    marginLeft: 10,
   },
 });

@@ -1,6 +1,5 @@
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 
-import { Text, View } from '@libs/shared/components/Themed';
 import { ShellStackScreenProps } from '@libs/shell/types/shellScreenTypes';
 
 export const NotFoundScreen = ({
@@ -10,7 +9,7 @@ export const NotFoundScreen = ({
     <View style={styles.container}>
       <Text style={styles.title}>This screen doesn't exist.</Text>
       <TouchableOpacity
-        onPress={() => navigation.replace('Shell')}
+        onPress={() => navigation.replace('Splash')}
         style={styles.link}
       >
         <Text style={styles.linkText}>Go to home screen!</Text>

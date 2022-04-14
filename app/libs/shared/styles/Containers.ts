@@ -13,8 +13,12 @@ export const containerStyles = StyleSheet.create({
     width: '100%',
   },
   inputContainer: {
+    backgroundColor: '#FFFFFF',
     border: '1px solid #EEEEEE',
+    padding: 8,
+    paddingBottom: 0,
     marginBottom: 15,
+    marginTop: 20,
     borderRadius: 5,
   },
   imageContainer: {
@@ -29,6 +33,10 @@ export const containerStyles = StyleSheet.create({
     height: '100%',
     backgroundColor: actionBlueDisabled + 60,
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  splashContainer: {
+    justifyContent: 'flex-end',
     alignItems: 'center',
   },
 });

@@ -1,3 +1,9 @@
+export interface AuthStateInterface {
+  loading: boolean;
+  isLoggedIn: boolean;
+  error: string;
+  user: AuthUserInterface | null;
+}
 export interface AuthCredentialsInterface {
   email: string;
   password: string;
@@ -9,6 +15,4 @@ export interface AuthUserInterface {
   id: string | null;
 }
 
-export interface DisplayUserInterface {
-
-}
+export interface DisplayUserInterface {}

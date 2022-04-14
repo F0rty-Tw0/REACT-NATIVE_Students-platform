@@ -1,10 +1,9 @@
-import { HomeScreen } from '@libs/shell/screens/HomeScreen';
+import { ShellScreensNavigator } from '@libs/shell/navigation/ShellScreensNavigator';
 import ProfileScreen from '@libs/profile/screens/ProfileScreen';
 import Colors from '@libs/shared/styles/Colors';
-import useColorScheme from '@/hooks/useColorScheme';
-import { ShellTabParamList } from '@/app/types/appTypes';
+import useColorScheme from '@libs/shared/hooks/useColorScheme';
+import { ShellTabParamList } from '@libs/shell/types/shellScreenTypes';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { AuthMenu } from '@libs/auth/components/AuthMenu';
 import { TabBarIcon } from '@libs/shared/components/TabBarIcon';
 
 // A bottom tab navigator displays tab buttons on the bottom of the display to switch screens. https://reactnavigation.org/docs/bottom-tab-navigator
@@ -22,11 +21,10 @@ export const BottomTabNavigator = () => {
     >
       <BottomTab.Screen
         name='Home'
-        component={HomeScreen}
+        component={ShellScreensNavigator}
         options={() => ({
           title: 'Home',
           tabBarIcon: ({ color }) => <TabBarIcon name='home' color={color} />,
-          headerRight: () => <AuthMenu />,
         })}
       />
 

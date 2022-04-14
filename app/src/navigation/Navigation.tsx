@@ -17,7 +17,6 @@ export default function Navigation({ colorScheme }: NavigationProp) {
     <NavigationContainer
       linking={LinkingConfiguration}
       // theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-      theme={colorScheme === 'dark' ? DefaultTheme : DarkTheme}
     >
       <ShellNavigator />
     </NavigationContainer>

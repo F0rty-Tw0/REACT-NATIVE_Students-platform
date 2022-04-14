@@ -14,12 +14,12 @@ export interface LoginLoading {
 }
 export interface LoginSuccess {
   type: typeof LOGIN_SUCCESS;
-  payload: AuthUserInterface;
+  user: AuthUserInterface;
 }
 
 export interface LoginFailure {
   type: typeof LOGIN_FAILURE;
-  payload: string;
+  error: string;
 }
 
 export interface RegisterLoading {
@@ -27,12 +27,12 @@ export interface RegisterLoading {
 }
 export interface RegisterSuccess {
   type: typeof REGISTER_SUCCESS;
-  payload: AuthUserInterface;
+  user: AuthUserInterface;
 }
 
 export interface RegisterFailure {
   type: typeof REGISTER_FAILURE;
-  payload: string;
+  error: string;
 }
 
 export interface CleanAuthErrors {

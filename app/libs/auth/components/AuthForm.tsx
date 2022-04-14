@@ -13,7 +13,10 @@ import { textStyle } from '@libs/shared/styles/Text';
 import { containerStyles } from '@libs/shared/styles/Containers';
 import { shadowStyles } from '@libs/shared/styles/Shadows';
 import { inputStyles } from '@libs/shared/styles/Inputs';
-import { actionBlueDark, errorRed } from '@libs/shared/styles/Colors';
+import {
+  actionBlueDisabled,
+  errorRed,
+} from '@libs/shared/styles/Colors';
 import { spacingStyle } from '@libs/shared/styles/Spacing';
 
 interface AuthFormProps {
@@ -62,15 +65,19 @@ export const AuthForm = ({
       <View
         style={[containerStyles.inputContainer, shadowStyles.containerShadow]}
       >
+        <Text style={textStyle.inputLabelText}>E-MAIL</Text>
         <TextInput
           style={inputStyles.formInput}
           onChangeText={setEmail}
           keyboardType='email-address'
           textContentType='emailAddress'
           value={email}
-          placeholder='E-MAIL'
-          placeholderTextColor={actionBlueDark}
+          placeholder='Your e-mail address'
+          placeholderTextColor={actionBlueDisabled}
         />
+        <Text style={[textStyle.inputLabelText, { paddingTop: 10 }]}>
+          PASSWORD
+        </Text>
         <TextInput
           style={[
             inputStyles.formInput,
@@ -79,22 +86,27 @@ export const AuthForm = ({
           onChangeText={setPassword}
           value={password}
           secureTextEntry={true}
-          placeholder='PASSWORD'
-          placeholderTextColor={actionBlueDark}
+          placeholder='Your password'
+          placeholderTextColor={actionBlueDisabled}
         />
 
         {isRegister && (
-          <TextInput
-            style={[
-              inputStyles.formInput,
-              !error && inputStyles.formInputLastChild,
-            ]}
-            onChangeText={setRepeatPassword}
-            value={repeatPassword}
-            secureTextEntry={true}
-            placeholder='REPEAT PASSWORD'
-            placeholderTextColor={actionBlueDark}
-          />
+          <>
+            <Text style={[textStyle.inputLabelText, { paddingTop: 10 }]}>
+              REPEAT PASSWORD
+            </Text>
+            <TextInput
+              style={[
+                inputStyles.formInput,
+                !error && inputStyles.formInputLastChild,
+              ]}
+              onChangeText={setRepeatPassword}
+              value={repeatPassword}
+              secureTextEntry={true}
+              placeholder='Repeat your password'
+              placeholderTextColor={actionBlueDisabled}
+            />
+          </>
         )}
         {error ? (
           <Text style={textStyle.errorText}>
