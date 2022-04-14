@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Provider as StoreProvider } from 'react-redux';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PersistGate } from 'redux-persist/integration/react';
+import { Loading } from '@libs/shared/components/Loading';
 import Navigation from '@app/navigation/Navigation';
 // HOOKS
 import useCachedResources from '@app/hooks/useCachedResources';
@@ -20,6 +21,7 @@ const App = () => {
       <PersistGate persistor={persistor}>
         <SafeAreaProvider>
           <Navigation colorScheme={colorScheme} />
+          <Loading />
           <StatusBar />
         </SafeAreaProvider>
       </PersistGate>

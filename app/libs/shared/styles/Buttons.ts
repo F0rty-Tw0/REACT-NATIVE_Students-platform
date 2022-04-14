@@ -4,7 +4,7 @@ import {
 } from '@libs/shared/styles/Colors';
 import { StyleSheet } from 'react-native';
 
-export const buttonsStyle = StyleSheet.create({
+export const buttonStyle = StyleSheet.create({
   actionButton: {
     paddingVertical: 16,
     paddingHorizontal: 32,

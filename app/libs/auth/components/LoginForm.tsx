@@ -13,7 +13,7 @@ import { loginAndSetUser } from '@libs/auth/redux/actions/authActions';
 import { appRegister } from '@libs/shell/redux/actions/appActions';
 // STYLES
 import { textStyle } from '@libs/shared/styles/Text';
-import { containersStyles } from '@libs/shared/styles/Containers';
+import { containerStyles } from '@libs/shared/styles/Containers';
 import { spacingStyle } from '@libs/shared/styles/Spacing';
 
 export const LoginForm = () => {
@@ -32,7 +32,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <View style={containersStyles.itemsContainer}>
+    <View style={containerStyles.itemsContainer}>
       <Text style={textStyle.title}>Log in</Text>
       <AuthForm
         isRegister={false}

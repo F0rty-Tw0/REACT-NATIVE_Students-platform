@@ -9,6 +9,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT,
+  LOGIN_LOADING,
+  REGISTER_LOADING,
 } from '@libs/auth/redux/authStoreTypes';
 
 interface InitialStateInterface {
@@ -29,11 +31,15 @@ export const authReducer = (
   action: AuthDispatchTypes
 ): InitialStateInterface => {
   switch (action.type) {
+    case LOGIN_LOADING:
+    case REGISTER_LOADING:
+      return { ...state, loading: true };
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
       return {
         ...state,
         user: action.payload,
+        loading: false,
         isLoggedIn: true,
       };
     case LOGIN_FAILURE:

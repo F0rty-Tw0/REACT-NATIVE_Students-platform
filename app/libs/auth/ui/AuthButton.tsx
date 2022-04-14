@@ -2,7 +2,7 @@
 import { Pressable, Text } from 'react-native';
 // STYLES
 import { spacingStyle } from '@libs/shared/styles/Spacing';
-import { buttonsStyle } from '@libs/shared/styles/Buttons';
+import { buttonStyle } from '@libs/shared/styles/Buttons';
 import { textStyle } from '@libs/shared/styles/Text';
 
 interface AuthButtonProps {
@@ -22,10 +22,10 @@ export const AuthButton = ({
   <Pressable
     style={[
       spacingStyle.mediumMarginTop,
-      buttonsStyle.actionButton,
+      buttonStyle.actionButton,
       passwordLength < 3 || !isAccepted || !isPasswordMatch
-        ? buttonsStyle.actionButtonDisabled
-        : buttonsStyle.actionBlueEnabled,
+        ? buttonStyle.actionButtonDisabled
+        : buttonStyle.actionBlueEnabled,
     ]}
     disabled={passwordLength < 3 || !isAccepted || !isPasswordMatch}
     onPress={handleOnPress}

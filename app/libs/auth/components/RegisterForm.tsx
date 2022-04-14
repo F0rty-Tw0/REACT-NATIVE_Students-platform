@@ -17,7 +17,7 @@ import {
 import { appLogin } from '@libs/shell/redux/actions/appActions';
 // STYLES
 import { textStyle } from '@libs/shared/styles/Text';
-import { containersStyles } from '@libs/shared/styles/Containers';
+import { containerStyles } from '@libs/shared/styles/Containers';
 import { spacingStyle } from '@libs/shared/styles/Spacing';
 
 export const RegisterForm = () => {
@@ -50,7 +50,7 @@ export const RegisterForm = () => {
   };
 
   return (
-    <View style={containersStyles.itemsContainer}>
+    <View style={containerStyles.itemsContainer}>
       <Text style={textStyle.title}>Sign up to get access</Text>
       <AuthForm
         email={email}

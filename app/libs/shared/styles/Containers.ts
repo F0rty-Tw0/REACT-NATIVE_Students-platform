@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
+import { actionBlueDisabled } from '@libs/shared/styles/Colors';
 
-export const containersStyles = StyleSheet.create({
+export const containerStyles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     padding: 20,
@@ -18,5 +19,16 @@ export const containersStyles = StyleSheet.create({
   },
   imageContainer: {
     marginBottom: 20,
-  }
+  },
+  checkBoxContainer: {
+    height: 20,
+  },
+  loadingContainer: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backgroundColor: actionBlueDisabled + 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

@@ -8,15 +8,15 @@ import { useAppSelector } from '@libs/shared/hooks/redux-hooks/useAppSelector';
 // REDUX
 import { REGISTER } from '@libs/shell/redux/shellStoreTypes';
 //  STYLES
-import { containersStyles } from '@libs/shared/styles/Containers';
+import { containerStyles } from '@libs/shared/styles/Containers';
 import Logo from '@images/logo.svg';
 
 export const AuthScreen = () => {
   const { appState } = useAppSelector((state) => state.shellReducer);
 
   return (
-    <View style={containersStyles.mainContainer}>
-      <View style={containersStyles.imageContainer}>
+    <View style={containerStyles.mainContainer}>
+      <View style={containerStyles.imageContainer}>
         <Logo />
       </View>
 

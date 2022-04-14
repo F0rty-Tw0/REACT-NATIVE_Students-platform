@@ -10,8 +10,8 @@ import { useAppSelector } from '@libs/shared/hooks/redux-hooks/useAppSelector';
 import { cleanAuthErrors } from '@libs/auth/redux/actions/authActions';
 // STYLES
 import { textStyle } from '@libs/shared/styles/Text';
-import { containersStyles } from '@libs/shared/styles/Containers';
-import { shadowsStyle } from '@libs/shared/styles/Shadows';
+import { containerStyles } from '@libs/shared/styles/Containers';
+import { shadowStyles } from '@libs/shared/styles/Shadows';
 import { inputStyles } from '@libs/shared/styles/Inputs';
 import { actionBlueDark, errorRed } from '@libs/shared/styles/Colors';
 import { spacingStyle } from '@libs/shared/styles/Spacing';
@@ -44,7 +44,7 @@ export const AuthForm = ({
     // This is intentional
   },
 }: AuthFormProps) => {
-  const error = useAppSelector((state) => state.authReducer.error);
+  const { error } = useAppSelector((state) => state.authReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export const AuthForm = ({
   return (
     <>
       <View
-        style={[containersStyles.inputContainer, shadowsStyle.containerShadow]}
+        style={[containerStyles.inputContainer, shadowStyles.containerShadow]}
       >
         <TextInput
           style={inputStyles.formInput}
@@ -109,7 +109,12 @@ export const AuthForm = ({
         ) : null}
       </View>
       {isRegister && (
-        <Text style={spacingStyle.smallMarginTop}>
+        <Text
+          style={[
+            spacingStyle.smallMarginTop,
+            containerStyles.checkBoxContainer,
+          ]}
+        >
           <BouncyCheckbox
             iconStyle={{
               borderWidth: 2,

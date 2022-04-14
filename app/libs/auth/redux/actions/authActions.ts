@@ -14,7 +14,6 @@ import {
 } from '@libs/auth/redux/authStoreTypes';
 //SERVICES
 import { login, register } from '@libs/auth/services/authService';
-
 export const logout = () => ({
   type: LOGOUT,
 });
