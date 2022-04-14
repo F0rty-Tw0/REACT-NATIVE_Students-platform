@@ -1,6 +1,5 @@
 // COMPONENTS
-import { TextInput } from 'react-native';
-import { View, Text } from '@libs/shared/components/Themed';
+import { TextInput, View, Text } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 // HOOKS
@@ -8,9 +7,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '@libs/shared/hooks/redux-hooks/useAppSelector';
 // REDUX
-import {
-  cleanAuthErrors,
-} from '@libs/auth/redux/actions/authActions';
+import { cleanAuthErrors } from '@libs/auth/redux/actions/authActions';
 // STYLES
 import { textStyle } from '@libs/shared/styles/Text';
 import { containersStyles } from '@libs/shared/styles/Containers';

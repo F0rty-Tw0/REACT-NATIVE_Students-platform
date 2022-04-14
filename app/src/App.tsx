@@ -15,7 +15,6 @@ import { store, persistor } from '@app/redux/store';
 const App = () => {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
-  
   return !isLoadingComplete ? null : (
     <StoreProvider store={store}>
       <PersistGate persistor={persistor}>

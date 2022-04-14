@@ -1,6 +1,5 @@
 // COMPONENTS
-import { Pressable } from 'react-native';
-import { View, Text } from '@libs/shared/components/Themed';
+import { Pressable, View, Text } from 'react-native';
 import { AuthButton } from '@libs/auth/ui/AuthButton';
 import { AuthForm } from '@libs/auth/ui/AuthForm';
 // MODELS

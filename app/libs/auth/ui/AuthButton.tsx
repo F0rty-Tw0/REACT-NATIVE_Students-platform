@@ -1,6 +1,5 @@
 // COMPONENTS
-import { Pressable } from 'react-native';
-import { Text } from '@libs/shared/components/Themed';
+import { Pressable, Text } from 'react-native';
 // STYLES
 import { spacingStyle } from '@libs/shared/styles/Spacing';
 import { buttonsStyle } from '@libs/shared/styles/Buttons';
