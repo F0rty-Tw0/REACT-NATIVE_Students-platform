@@ -1,8 +1,8 @@
 export const Shell = {
   screens: {
     Home: 'home',
-    Profile: 'profile',
-    Menu: 'menu',
+    Discover: 'discover',
     Chat: 'chat',
+    Menu: 'menu',
   },
 };

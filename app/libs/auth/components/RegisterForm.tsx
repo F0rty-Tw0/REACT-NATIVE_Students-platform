@@ -1,6 +1,6 @@
 // COMPONENTS
 import { Pressable, View, Text } from 'react-native';
-import { AuthButton } from '@libs/auth/ui/AuthButton';
+import { AuthButton } from '@libs/auth/components/AuthButton';
 import { AuthForm } from '@libs/auth/components/AuthForm';
 // MODELS
 import { AuthScreenProp } from '@libs/auth/types/authScreenTypes';
@@ -33,7 +33,7 @@ export const RegisterForm = () => {
   const handleRegister = async () => {
     try {
       await dispatch(registerAndSetUser({ email, password }));
-      navigation.navigate('Shell');
+      navigation.navigate('Splash');
     } catch (_error) {
       return; // Error is handled in the reducer
     }

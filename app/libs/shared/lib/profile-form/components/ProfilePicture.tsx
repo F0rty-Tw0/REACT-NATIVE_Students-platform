@@ -4,6 +4,7 @@ import User from '@images/user.svg';
 // STYLES
 import { profileContainerStyle } from '@libs/shared/lib/profile-form/styles/profileContainerStyles';
 import { profileButtonStyle } from '@libs/shared/lib/profile-form/styles/profileButtonStyles';
+import { containerStyles } from '@libs/shared/styles/Containers';
 import { textStyle } from '@libs/shared/styles/Text';
 import { buttonStyle } from '@libs/shared/styles/Buttons';
 import { profileImageStyle } from '@libs/shared/lib/profile-form/styles/profileImageStyles';
@@ -17,7 +18,7 @@ export const ProfilePicture = ({
   handlePictureUpload,
 }: ProfilePictureProps) => {
   return (
-    <View style={profileContainerStyle.twoColumnsContainer}>
+    <View style={containerStyles.twoColumnsContainer}>
       <View>
         <Text style={[textStyle.inputLabelText, { marginLeft: 0 }]}>
           Profile Picture

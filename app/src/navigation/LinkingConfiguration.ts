@@ -7,10 +7,10 @@ const linkingConfiguration: LinkingOptions<ShellStackParamList> = {
   prefixes: [Linking.createURL('/')],
   config: {
     screens: {
+      Onboarding: 'onboarding',
+      Splash: 'splash',
       Shell,
       Auth: 'auth',
-      Splash: 'splash',
-      Onboarding: 'onboarding',
       NotFound: '*',
     },
   },

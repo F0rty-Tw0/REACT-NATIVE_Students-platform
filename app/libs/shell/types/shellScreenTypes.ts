@@ -11,8 +11,7 @@ export type ShellStackParamList = {
   NotFound: undefined;
   Splash: undefined;
   Shell: NavigatorScreenParams<ShellTabParamList> | undefined;
-  Auth: undefined;
-  Home: undefined;
+  Auth: AuthScreenParamList | undefined;
   Onboarding: undefined;
   // Discover: undefined;
   // Events: undefined;
@@ -30,9 +29,9 @@ export type ShellStackParamList = {
 
 export type ShellTabParamList = {
   Home: undefined;
-  Profile: undefined;
-  Menu: undefined;
+  Discover: undefined;
   Chat: undefined;
+  Menu: undefined;
 };
 
 export type ShellStackScreenProps<Screen extends keyof ShellStackParamList> =

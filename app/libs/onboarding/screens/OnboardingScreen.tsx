@@ -5,6 +5,7 @@ import { Logo } from '@libs/shared/ui/Logo';
 // STYLES
 import { containerStyles } from '@libs/shared/styles/Containers';
 import { textStyle } from '@libs/shared/styles/Text';
+
 export const OnboardingScreen = () => {
   return (
     <View style={containerStyles.mainContainer}>
@@ -13,7 +14,6 @@ export const OnboardingScreen = () => {
         <Text style={[textStyle.title, { marginBottom: 50 }]}>
           Before we start...
         </Text>
-
         <ProfileForm />
       </View>
     </View>

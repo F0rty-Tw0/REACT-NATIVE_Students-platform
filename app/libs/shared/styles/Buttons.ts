@@ -1,7 +1,4 @@
-import {
-  actionBlue,
-  actionBlueDisabled,
-} from '@libs/shared/styles/Colors';
+import { actionBlue, actionBlueDisabled } from '@libs/shared/styles/Colors';
 import { StyleSheet } from 'react-native';
 
 export const buttonStyle = StyleSheet.create({
@@ -16,5 +13,9 @@ export const buttonStyle = StyleSheet.create({
   },
   actionButtonDisabled: {
     backgroundColor: actionBlueDisabled,
+  },
+  logoutButton: {
+    textAlign: 'center',
+    backgroundColor: '#FFF',
   },
 });

@@ -7,9 +7,9 @@ import {
 
 export const textStyle = StyleSheet.create({
   title: {
+    fontFamily: 'Teko',
     color: actionBlueDark,
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 30,
   },
   subtext: {
     color: actionBlue,
@@ -51,5 +51,19 @@ export const textStyle = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     marginLeft: 10,
+  },
+  logoutText: {
+    color: actionBlueDark,
+    fontFamily: 'Teko',
+    fontSize: 26,
+    textTransform: 'uppercase',
+  },
+  centerText: {
+    textAlign: 'center',
+  },
+  sliderLabelText: {
+    color: actionBlueDark,
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

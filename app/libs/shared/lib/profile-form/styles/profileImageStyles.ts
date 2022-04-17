@@ -6,4 +6,8 @@ export const profileImageStyle = StyleSheet.create({
     height: 100,
     marginBottom: 10,
   },
+  profileMenuImage: {
+    width: 70,
+    height: 70,
+  },
 });

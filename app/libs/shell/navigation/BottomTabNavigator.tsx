@@ -1,22 +1,37 @@
+// COMPONENTS
 import { ShellScreensNavigator } from '@libs/shell/navigation/ShellScreensNavigator';
-import ProfileScreen from '@libs/profile/screens/ProfileScreen';
-import Colors from '@libs/shared/styles/Colors';
-import useColorScheme from '@libs/shared/hooks/useColorScheme';
-import { ShellTabParamList } from '@libs/shell/types/shellScreenTypes';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TabBarIcon } from '@libs/shared/components/TabBarIcon';
+// TYPES
+import { ShellTabParamList } from '@libs/shell/types/shellScreenTypes';
+// STYLES
+import { actionBlue } from '@libs/shared/styles/Colors';
+import { MenuScreen } from '@libs/menu/src/screens/MenuScreen';
 
-// A bottom tab navigator displays tab buttons on the bottom of the display to switch screens. https://reactnavigation.org/docs/bottom-tab-navigator
 const BottomTab = createBottomTabNavigator<ShellTabParamList>();
 
 export const BottomTabNavigator = () => {
-  const colorScheme = useColorScheme();
-
   return (
     <BottomTab.Navigator
       initialRouteName='Home'
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarStyle: {
+          height: 80,
+        },
+        tabBarLabelStyle: {
+          fontSize: 16,
+          textTransform: 'uppercase',
+          fontFamily: 'Teko',
+        },
+        tabBarActiveTintColor: actionBlue,
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          fontFamily: 'Teko',
+          fontSize: 24,
+          fontWeight: 'bold',
+          textTransform: 'uppercase',
+          color: actionBlue,
+        },
       }}
     >
       <BottomTab.Screen
@@ -29,11 +44,29 @@ export const BottomTabNavigator = () => {
       />
 
       <BottomTab.Screen
-        name='Profile'
-        component={ProfileScreen}
+        name='Discover'
+        component={MenuScreen}
         options={{
-          title: 'Profile',
-          tabBarIcon: ({ color }) => <TabBarIcon name='user' color={color} />,
+          title: 'Discover',
+          tabBarIcon: ({ color }) => <TabBarIcon name='search' color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name='Chat'
+        component={MenuScreen}
+        options={{
+          title: 'Chat',
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name='comments' color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name='Menu'
+        component={MenuScreen}
+        options={{
+          title: 'Menu',
+          tabBarIcon: ({ color }) => <TabBarIcon name='bars' color={color} />,
         }}
       />
     </BottomTab.Navigator>

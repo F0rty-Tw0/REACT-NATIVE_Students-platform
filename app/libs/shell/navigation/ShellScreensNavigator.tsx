@@ -1,3 +1,4 @@
+// COMPONENTS
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { BottomTabNavigator } from '@libs/shell/navigation/BottomTabNavigator';
 import { OnboardingScreen } from '@libs/onboarding/screens/OnboardingScreen';
@@ -9,15 +10,15 @@ export const ShellScreensNavigator = () => {
   return (
     <>
       <Stack.Screen
-        name='Onboarding'
-        component={OnboardingScreen}
+        name='Shell'
+        component={BottomTabNavigator}
         options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name='Shell'
-        component={BottomTabNavigator}
+        name='Onboarding'
+        component={OnboardingScreen}
         options={{
           headerShown: false,
         }}

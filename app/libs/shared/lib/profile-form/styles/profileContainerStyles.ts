@@ -1,11 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 export const profileContainerStyle = StyleSheet.create({
-  twoColumnsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
   userImageContainer: {
     justifyContent: 'center',
     alignItems: 'center',

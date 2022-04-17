@@ -15,12 +15,12 @@ import { useNavigation } from '@react-navigation/native';
 import { AuthScreenProp } from '@libs/auth/types/authScreenTypes';
 
 export const ProfileForm = () => {
-  const [name, setName] = useState('');
-  const [studyProgramme, setStudyProgramme] = useState('');
-  const [formCompleted, setFormCompleted] = useState(false);
   const { profile, pictureUrl } = useAppSelector(
     (state) => state.profileFormReducer
   );
+  const [name, setName] = useState('');
+  const [studyProgramme, setStudyProgramme] = useState('');
+  const [formCompleted, setFormCompleted] = useState(false);
   const navigation = useNavigation<AuthScreenProp>();
   const dispatch = useDispatch();
 
@@ -32,15 +32,14 @@ export const ProfileForm = () => {
     }
   }, [name, studyProgramme]);
 
-  profile &&
-    useEffect(() => {
-      setStudyProgramme(profile.studyProgramme);
-      setName(profile.name);
-    }, []);
+  useEffect(() => {
+    setStudyProgramme(profile?.studyProgramme || '');
+    setName(profile?.name || '');
+  }, [profile]);
 
-  const handleOnPress = () => {
-    dispatch(submitProfileForm({ name, studyProgramme }));
-    navigation.navigate('Shell');
+  const handleOnPress = async () => {
+    await dispatch(submitProfileForm({ name, studyProgramme }));
+    navigation.navigate('Splash');
   };
 
   const handlePictureUpload = () => {

@@ -3,17 +3,18 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // COMPONENTS
 import { ShellStackParamList } from '@libs/shell/types/shellScreenTypes';
 import { NotFoundScreen } from '@libs/shared/screens/NotFoundScreen';
-import { ShellScreensNavigator } from '@libs/shell/navigation/ShellScreensNavigator';
 import { SplashScreen } from '@libs/splash/screens/SplashScreen';
-
+import { AuthScreen } from '@libs/auth/screens/AuthScreen';
 // HOOKS
 import { useAppSelector } from '@libs/shared/hooks/redux-hooks/useAppSelector';
-import { AuthScreen } from '@libs/auth/screens/AuthScreen';
+// TYPES
+import { ShellScreensNavigator } from '@libs/shell/navigation/ShellScreensNavigator';
 
 const Stack = createNativeStackNavigator<ShellStackParamList>();
 
 export const ShellNavigator = () => {
   const { isLoggedIn } = useAppSelector((state) => state.authReducer);
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -32,6 +33,7 @@ export const ShellNavigator = () => {
           }}
         />
       )}
+
       <Stack.Screen
         name='NotFound'
         component={NotFoundScreen}
