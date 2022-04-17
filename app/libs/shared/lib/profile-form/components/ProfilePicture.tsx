@@ -1,12 +1,21 @@
 // COMPONENTS
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, Image } from 'react-native';
 import User from '@images/user.svg';
 // STYLES
 import { profileContainerStyle } from '@libs/shared/lib/profile-form/styles/profileContainerStyles';
 import { profileButtonStyle } from '@libs/shared/lib/profile-form/styles/profileButtonStyles';
 import { textStyle } from '@libs/shared/styles/Text';
 import { buttonStyle } from '@libs/shared/styles/Buttons';
-export const ProfilePicture = () => {
+import { profileImageStyle } from '@libs/shared/lib/profile-form/styles/profileImageStyles';
+interface ProfilePictureProps {
+  pictureSource: string;
+  handlePictureUpload: () => void;
+}
+
+export const ProfilePicture = ({
+  pictureSource,
+  handlePictureUpload,
+}: ProfilePictureProps) => {
   return (
     <View style={profileContainerStyle.twoColumnsContainer}>
       <View>
@@ -20,16 +29,21 @@ export const ProfilePicture = () => {
             profileButtonStyle.uploadButton,
             { padding: 10 },
           ]}
-          onPress={() => {
-            console.log('Uploading');
-          }}
+          onPress={handlePictureUpload}
         >
           <Text style={textStyle.buttonText}>Upload</Text>
         </Pressable>
       </View>
       <View style={profileContainerStyle.userImageContainer}>
         <View style={profileContainerStyle.alignImage}>
-          <User />
+          {pictureSource ? (
+            <Image
+              style={profileImageStyle.profileImage}
+              source={{ uri: pictureSource }}
+            />
+          ) : (
+            <User />
+          )}
         </View>
       </View>
     </View>

@@ -16,6 +16,11 @@ export const ShellNavigator = () => {
   const { isLoggedIn } = useAppSelector((state) => state.authReducer);
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name='Splash'
+        component={SplashScreen}
+        options={{ title: 'Welcome!', headerShown: false }}
+      />
       {isLoggedIn ? (
         ShellScreensNavigator()
       ) : (
@@ -27,12 +32,6 @@ export const ShellNavigator = () => {
           }}
         />
       )}
-      <Stack.Screen
-        name='Splash'
-        component={SplashScreen}
-        options={{ title: 'Welcome!', headerShown: false }}
-      />
-
       <Stack.Screen
         name='NotFound'
         component={NotFoundScreen}

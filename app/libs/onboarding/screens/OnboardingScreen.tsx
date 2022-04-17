@@ -1,6 +1,6 @@
 // COMPONENTS
 import { View, Text } from 'react-native';
-import { ProfileForm } from '@libs/shared/lib/profile-form/ProfileForm';
+import { ProfileForm } from '@libs/shared/lib/profile-form/src/ProfileForm';
 import { Logo } from '@libs/shared/ui/Logo';
 // STYLES
 import { containerStyles } from '@libs/shared/styles/Containers';

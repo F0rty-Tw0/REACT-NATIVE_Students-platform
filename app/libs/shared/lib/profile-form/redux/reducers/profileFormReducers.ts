@@ -2,6 +2,9 @@
 import { ProfileFormInterface as InitialStateInterface } from '@libs/shared/lib/profile-form/models/interfaces/profileFormInterface';
 import {
   ProfileFormDispatchTypes,
+  UPLOAD_PICTURE_LOADING,
+  UPLOAD_PICTURE_SUCCESS,
+  UPLOAD_PICTURE_FAILURE,
   SUBMIT_PROFILE_FORM_SUCCESS,
   SUBMIT_PROFILE_FORM_LOADING,
   SUBMIT_PROFILE_FORM_FAILURE,
@@ -13,6 +16,7 @@ const initialState: InitialStateInterface = {
   isFormSubmitted: false,
   error: '',
   profile: null,
+  pictureUrl: '',
 };
 
 export const profileFormReducer = (
@@ -21,6 +25,7 @@ export const profileFormReducer = (
 ): InitialStateInterface => {
   switch (action.type) {
     case SUBMIT_PROFILE_FORM_LOADING:
+    case UPLOAD_PICTURE_LOADING:
       return { ...state, loading: true };
     case SUBMIT_PROFILE_FORM_SUCCESS:
       return {
@@ -29,6 +34,13 @@ export const profileFormReducer = (
         loading: false,
         isFormSubmitted: true,
       };
+    case UPLOAD_PICTURE_SUCCESS:
+      return {
+        ...state,
+        pictureUrl: action.pictureUrl,
+        loading: false,
+      };
+    case UPLOAD_PICTURE_FAILURE:
     case SUBMIT_PROFILE_FORM_FAILURE:
       return {
         ...state,
@@ -40,6 +52,7 @@ export const profileFormReducer = (
         ...state,
         error: '',
       };
+
     default:
       return state;
   }

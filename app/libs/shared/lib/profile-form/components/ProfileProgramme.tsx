@@ -8,13 +8,13 @@ import { textStyle } from '@libs/shared/styles/Text';
 import { inputStyles } from '@libs/shared/styles/Inputs';
 
 interface ProfileProgrammeProps {
-  programme: string;
-  setProgramme: (name: string) => void;
+  studyProgramme: string;
+  setStudyProgramme: (name: string) => void;
 }
 
 export const ProfileProgramme = ({
-  programme,
-  setProgramme,
+  studyProgramme,
+  setStudyProgramme,
 }: ProfileProgrammeProps) => {
   return (
     <View
@@ -23,9 +23,9 @@ export const ProfileProgramme = ({
       <Text style={textStyle.inputLabelText}>Study programme</Text>
       <TextInput
         style={inputStyles.formInput}
-        onChangeText={setProgramme}
+        onChangeText={setStudyProgramme}
         textContentType='name'
-        value={programme}
+        value={studyProgramme}
         placeholder='Select from list'
         placeholderTextColor={actionBlueDisabled}
       />

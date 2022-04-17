@@ -3,10 +3,10 @@ export interface ProfileFormInterface {
   isFormSubmitted: boolean;
   error: string;
   profile: ProfileInterface | null;
+  pictureUrl: string;
 }
 
 export interface ProfileInterface {
-  pictureUrl: string;
   name: string;
   studyProgramme: string;
 }
