@@ -3,6 +3,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence,
 } from 'firebase/auth';
 // MODELS
 import {
@@ -18,6 +20,7 @@ export const login = async ({
 }: AuthCredentialsInterface): Promise<AuthUserInterface> => {
   try {
     const auth = getAuth();
+    await setPersistence(auth, browserSessionPersistence);
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     return {
       email: user.email,
@@ -35,6 +38,7 @@ export const register = async ({
 }: AuthCredentialsInterface): Promise<AuthUserInterface> => {
   try {
     const auth = getAuth();
+    await setPersistence(auth, browserSessionPersistence);
     const { user } = await createUserWithEmailAndPassword(
       auth,
       email,
@@ -45,6 +49,15 @@ export const register = async ({
       id: user.uid,
       token: user.refreshToken,
     };
+  } catch (error: any) {
+    throw new Error(getMessageFromErrorCode(error.code));
+  }
+};
+
+export const logout = async (): Promise<void> => {
+  try {
+    const auth = getAuth();
+    await auth.signOut();
   } catch (error: any) {
     throw new Error(getMessageFromErrorCode(error.code));
   }

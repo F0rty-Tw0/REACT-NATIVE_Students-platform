@@ -3,18 +3,19 @@ import { AuthStateInterface as InitialStateInterface } from '@libs/auth/models/i
 import {
   AuthDispatchTypes,
   CLEAN_AUTH_ERRORS,
+  REGISTER_LOADING,
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
+  LOGIN_LOADING,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  REHYDRATE_USER,
   LOGOUT,
-  LOGIN_LOADING,
-  REGISTER_LOADING,
 } from '@libs/auth/redux/authStoreTypes';
 
 const initialState: InitialStateInterface = {
   user: null,
-  loading: false,
+  isLoading: false,
   error: '',
   isLoggedIn: false,
 };
@@ -26,13 +27,15 @@ export const authReducer = (
   switch (action.type) {
     case LOGIN_LOADING:
     case REGISTER_LOADING:
-      return { ...state, loading: true };
+      return { ...state, isLoading: true };
+    case REHYDRATE_USER:
+      return { ...state, user: action.user };
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
       return {
         ...state,
         user: action.user,
-        loading: false,
+        isLoading: false,
         isLoggedIn: true,
       };
     case LOGIN_FAILURE:
@@ -40,7 +43,7 @@ export const authReducer = (
       return {
         ...state,
         error: action.error,
-        loading: false,
+        isLoading: false,
       };
     case CLEAN_AUTH_ERRORS:
       return {

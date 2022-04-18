@@ -1,5 +1,5 @@
 export interface AuthStateInterface {
-  loading: boolean;
+  isLoading: boolean;
   isLoggedIn: boolean;
   error: string;
   user: AuthUserInterface | null;
@@ -10,9 +10,7 @@ export interface AuthCredentialsInterface {
 }
 
 export interface AuthUserInterface {
-  email: string | null;
-  token: string | null;
-  id: string | null;
+  email: string;
+  token: string; // We don't need to store this since firebase handles it for us
+  id: string; // We don't need to store this since firebase handles it for us
 }
-
-export interface DisplayUserInterface {}

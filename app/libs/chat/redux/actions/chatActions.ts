@@ -2,7 +2,6 @@ import { Dispatch } from 'redux';
 import { ChatInterface } from '@libs/chat/models/interfaces/chatInterface';
 import {
   ChatDispatchTypes,
-  SET_CURRENT_CHAT_ROOM_MESSAGES,
 } from '@libs/chat/redux/types/sharedTypes';
 import {
   ChatRoomDispatchTypes,
@@ -30,27 +29,24 @@ export const getAllChatRoomsAction =
     try {
       dispatch({ type: GET_ALL_CHAT_ROOMS_LOADING });
       const chatRooms = await getAllChatRooms();
-      dispatch({ type: GET_ALL_CHAT_ROOMS_SUCCESS, payload: chatRooms });
-    } catch (error) {
+      dispatch({ type: GET_ALL_CHAT_ROOMS_SUCCESS, chatRooms });
+    } catch (error: any) {
       console.log(error);
-      dispatch({ type: GET_ALL_CHAT_ROOMS_FAILURE });
+      dispatch({ type: GET_ALL_CHAT_ROOMS_FAILURE, error: error.message });
     }
   };
 
 export const createAndGetChatRoom =
   (chatRoomName: string) =>
-  async (dispatch: Dispatch<ChatRoomDispatchTypes | ChatDispatchTypes>): Promise<void> => {
+  async (
+    dispatch: Dispatch<ChatRoomDispatchTypes | ChatDispatchTypes>
+  ): Promise<void> => {
     try {
       dispatch({ type: CREATE_CHAT_ROOM_LOADING });
       const newChatRoom = await createDBChatRoom(chatRoomName);
-      dispatch({ type: CREATE_CHAT_ROOM_SUCCESS, payload: newChatRoom });
-      dispatch({ type: SET_CURRENT_CHAT_ROOM, payload: newChatRoom });
-      dispatch({
-        type: SET_CURRENT_CHAT_ROOM_MESSAGES,
-        payload: newChatRoom.messages,
-      });
-    } catch (error) {
+      dispatch({ type: CREATE_CHAT_ROOM_SUCCESS, chatRoom: newChatRoom });
+    } catch (error: any) {
       console.log(error);
-      dispatch({ type: CREATE_CHAT_ROOM_FAILURE });
+      dispatch({ type: CREATE_CHAT_ROOM_FAILURE, error: error.message });
     }
   };

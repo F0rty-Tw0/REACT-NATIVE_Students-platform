@@ -15,6 +15,7 @@ export const containerStyles = StyleSheet.create({
   inputContainer: {
     backgroundColor: '#FFFFFF',
     border: '1px solid #EEEEEE',
+    width: '100%',
     padding: 8,
     paddingBottom: 0,
     marginBottom: 15,

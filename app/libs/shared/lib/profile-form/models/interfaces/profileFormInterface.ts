@@ -1,5 +1,5 @@
 export interface ProfileFormInterface {
-  loading: boolean;
+  isLoading: boolean;
   isFormSubmitted: boolean;
   error: string;
   profile: ProfileInterface | null;

@@ -22,6 +22,7 @@
     "@react-navigation/native-stack": "^6.1.0",
     "@redux-devtools/extension": "^3.2.2",
     "@types/react-redux": "^7.1.22",
+    "dayjs": "^1.11.1",
     "expo": "~44.0.0",
     "expo-asset": "~8.4.4",
     "expo-constants": "~13.0.0",

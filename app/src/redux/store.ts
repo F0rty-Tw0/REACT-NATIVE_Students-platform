@@ -10,7 +10,6 @@ const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
   blacklist: [
-    'chatReducer',
     'currentChatReducer',
     'messageReducer',
     'shellReducer',

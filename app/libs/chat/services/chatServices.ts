@@ -1,6 +1,7 @@
-import { chatRef } from '@/app/data-access/firebase';
 import { child, get, push, set } from 'firebase/database';
+import { chatRef } from '@app/data-access/firebase';
 import { ChatInterface } from '@libs/chat/models/interfaces/chatInterface';
+import { MessageInterface } from '../models/interfaces/messageInterface';
 
 export const createDBChatRoom = async (
   chatRoomName: string
@@ -16,9 +17,21 @@ export const getAllChatRooms = async (): Promise<ChatInterface[]> => {
   const dataSnapshot = await get(chatRef);
   const chatRooms = dataSnapshot.val();
   const allChatRooms: ChatInterface[] = [];
-  for (const [chatId, chat] of Object.entries(chatRooms)) {
-    allChatRooms.push({ ...(chat as ChatInterface), chatId });
+  if (chatRooms) {
+    for (const [chatId, chat] of Object.entries(chatRooms)) {
+      const thisChat: ChatInterface = chat as ChatInterface;
+      const chatRoomMessages: MessageInterface[] = [];
+      if (thisChat.messages) {
+        for (const [messageId, message] of Object.entries(thisChat.messages)) {
+          chatRoomMessages.push({ ...message, messageId });
+        }
+      }
+      allChatRooms.push({
+        ...thisChat,
+        chatId,
+        messages: chatRoomMessages,
+      });
+    }
   }
-  console.log(allChatRooms);
   return allChatRooms;
 };

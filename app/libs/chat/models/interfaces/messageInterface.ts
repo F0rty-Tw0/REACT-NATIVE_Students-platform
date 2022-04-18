@@ -2,7 +2,9 @@ export interface MessageInterface {
   chatId: string;
   messageId: string;
   text: string;
-  isFavorite: boolean;
+  timeStamp: string;
+  isFavorite?: boolean;
   userId: string;
   userEmail: string;
+  userPictureUrl: string;
 }

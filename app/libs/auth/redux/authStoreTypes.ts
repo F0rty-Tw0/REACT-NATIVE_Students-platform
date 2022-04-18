@@ -3,6 +3,7 @@ import { AuthUserInterface } from '../models/interfaces/authInterface';
 export const LOGIN_LOADING = 'LOGIN_LOADING';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const REHYDRATE_USER = 'REHYDRATE_USER';
 export const REGISTER_LOADING = 'REGISTER_LOADING';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
@@ -22,6 +23,10 @@ export interface LoginFailure {
   error: string;
 }
 
+export interface RehydrateUser {
+  type: typeof REHYDRATE_USER;
+  user: AuthUserInterface;
+}
 export interface RegisterLoading {
   type: typeof REGISTER_LOADING;
 }
@@ -47,6 +52,7 @@ export type AuthDispatchTypes =
   | LoginLoading
   | LoginSuccess
   | LoginFailure
+  | RehydrateUser
   | RegisterLoading
   | RegisterSuccess
   | RegisterFailure

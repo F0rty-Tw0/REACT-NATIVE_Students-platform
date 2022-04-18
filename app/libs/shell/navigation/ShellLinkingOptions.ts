@@ -2,7 +2,7 @@ export const Shell = {
   screens: {
     Home: 'home',
     Discover: 'discover',
-    Chat: 'chat',
+    ChatRooms: 'chat',
     Menu: 'menu',
   },
 };

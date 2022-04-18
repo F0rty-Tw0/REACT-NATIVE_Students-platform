@@ -10,10 +10,15 @@ import {
   UPLOAD_PICTURE_LOADING,
   UPLOAD_PICTURE_SUCCESS,
   UPLOAD_PICTURE_FAILURE,
+  CLEAN_PROFILE_FORM,
 } from '@libs/shared/lib/profile-form/redux/profileFormStoreTypes';
 
 export const cleanProfileFormErrors = () => ({
   type: CLEAN_PROFILE_FORM_ERRORS,
+});
+
+export const cleanProfileForm = () => ({
+  type: CLEAN_PROFILE_FORM,
 });
 
 export const submitProfileForm =

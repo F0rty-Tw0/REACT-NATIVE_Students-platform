@@ -32,13 +32,13 @@ export const setCurrentChatMessages = (messages: MessageInterface[]) => ({
 });
 
 export const addMessage =
-  (chatId: string, message: string) =>
+  (messageObject: MessageInterface) =>
   async (
     dispatch: Dispatch<MessageDispatchTypes | ChatDispatchTypes>
   ): Promise<void> => {
     try {
       dispatch({ type: ADD_MESSAGE_LOADING });
-      const newMessage = await addMessageToChat(chatId, message);
+      const newMessage = await addMessageToChat(messageObject);
       dispatch({ type: ADD_MESSAGE_SUCCESS, payload: newMessage });
       dispatch({ type: ADD_MESSAGE_TO_CURRENT_CHAT_ROOM, payload: newMessage });
     } catch (error) {

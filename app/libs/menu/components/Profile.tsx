@@ -1,16 +1,15 @@
 // COMPONENTS
-import { Text, View, Image, Pressable } from 'react-native';
-import { containerStyles } from '@libs/shared/styles/Containers';
+import { Text, View, Image } from 'react-native';
+import { ActionButton } from '@libs/shared/components/ActionButton';
 // HOOKS
 import { useAppSelector } from '@libs/shared/hooks/redux-hooks/useAppSelector';
+import { useNavigation } from '@react-navigation/native';
 // STYLES
 import { profileImageStyle } from '@libs/shared/lib/profile-form/styles/profileImageStyles';
+import { containerStyles } from '@libs/shared/styles/Containers';
 import { textStyle } from '@libs/shared/styles/Text';
-import { buttonStyle } from '@libs/shared/styles/Buttons';
-import { shadowStyles } from '@libs/shared/styles/Shadows';
-import { useNavigation } from '@react-navigation/native';
+// TYPES
 import { ShellScreenProp } from '@libs/shell/types/shellScreenTypes';
-import { Shell } from '@libs/shell/navigation/ShellLinkingOptions';
 
 export const Profile = () => {
   const { pictureUrl, profile } = useAppSelector(
@@ -22,7 +21,7 @@ export const Profile = () => {
   const navigation = useNavigation<ShellScreenProp>();
 
   const handleEditPress = () => {
-    navigation.navigate('EditProfile' );
+    navigation.navigate('EditProfile');
   };
   return (
     <View style={{ borderBottomWidth: 1, borderBottomColor: '#E0E0E0' }}>
@@ -39,23 +38,7 @@ export const Profile = () => {
           <Text>{profile.studyProgramme}</Text>
         </View>
       </View>
-      <Pressable
-        style={[
-          buttonStyle.actionButton,
-          buttonStyle.actionBlueEnabled,
-          shadowStyles.containerShadow,
-          {
-            padding: 10,
-            marginTop: 20,
-            marginBottom: 30,
-          },
-        ]}
-        onPress={handleEditPress}
-      >
-        <Text style={[textStyle.buttonText, textStyle.centerText]}>
-          Edit profile
-        </Text>
-      </Pressable>
+      <ActionButton buttonText='Edit Profile' onPress={handleEditPress} />
     </View>
   );
 };

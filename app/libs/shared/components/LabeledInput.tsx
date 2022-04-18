@@ -7,27 +7,29 @@ import { shadowStyles } from '@libs/shared/styles/Shadows';
 import { textStyle } from '@libs/shared/styles/Text';
 import { inputStyles } from '@libs/shared/styles/Inputs';
 
-interface ProfileNameProps {
-  name: string;
-  setName: (name: string) => void;
+interface LabeledInputProps {
+  label: string;
+  placeholderText: string;
+  value: string;
+  setValue: (value: string) => void;
 }
 
-export const ProfileName = ({ name, setName }: ProfileNameProps) => {
+export const LabeledInput = ({
+  label,
+  placeholderText,
+  value,
+  setValue,
+}: LabeledInputProps) => {
   return (
     <View
-      style={[
-        containerStyles.inputContainer,
-        shadowStyles.containerShadow,
-        { marginTop: 40 },
-      ]}
+      style={[containerStyles.inputContainer, shadowStyles.containerShadow]}
     >
-      <Text style={textStyle.inputLabelText}>WHAT IS YOUR NAME?</Text>
+      <Text style={textStyle.inputLabelText}>{label}</Text>
       <TextInput
         style={inputStyles.formInput}
-        onChangeText={setName}
-        textContentType='name'
-        value={name}
-        placeholder='First name and last name'
+        onChangeText={setValue}
+        value={value}
+        placeholder={placeholderText}
         placeholderTextColor={actionBlueDisabled}
       />
     </View>

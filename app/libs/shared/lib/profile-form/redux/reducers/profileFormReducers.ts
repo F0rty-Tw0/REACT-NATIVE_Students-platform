@@ -9,10 +9,11 @@ import {
   SUBMIT_PROFILE_FORM_LOADING,
   SUBMIT_PROFILE_FORM_FAILURE,
   CLEAN_PROFILE_FORM_ERRORS,
+  CLEAN_PROFILE_FORM,
 } from '@libs/shared/lib/profile-form/redux/profileFormStoreTypes';
 
 const initialState: InitialStateInterface = {
-  loading: false,
+  isLoading: false,
   isFormSubmitted: false,
   error: '',
   profile: null,
@@ -26,33 +27,36 @@ export const profileFormReducer = (
   switch (action.type) {
     case SUBMIT_PROFILE_FORM_LOADING:
     case UPLOAD_PICTURE_LOADING:
-      return { ...state, loading: true };
+      return { ...state, isLoading: true };
     case SUBMIT_PROFILE_FORM_SUCCESS:
       return {
         ...state,
         profile: action.profile,
-        loading: false,
+        isLoading: false,
         isFormSubmitted: true,
       };
     case UPLOAD_PICTURE_SUCCESS:
       return {
         ...state,
         pictureUrl: action.pictureUrl,
-        loading: false,
+        isLoading: false,
       };
     case UPLOAD_PICTURE_FAILURE:
     case SUBMIT_PROFILE_FORM_FAILURE:
       return {
         ...state,
         error: action.error,
-        loading: false,
+        isLoading: false,
       };
     case CLEAN_PROFILE_FORM_ERRORS:
       return {
         ...state,
         error: '',
       };
-
+    case CLEAN_PROFILE_FORM:
+      return {
+        ...initialState,
+      };
     default:
       return state;
   }

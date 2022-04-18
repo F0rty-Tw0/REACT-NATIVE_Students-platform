@@ -6,9 +6,10 @@ import { containerStyles } from '@libs/shared/styles/Containers';
 import { useAppSelector } from '@libs/shared/hooks/redux-hooks/useAppSelector';
 
 export const Loading = () => {
-  const { loading } = useAppSelector((state) => state.authReducer);
+  const authIsLoading = useAppSelector((state) => state.authReducer.isLoading);
+
   return (
-    (loading && (
+    (authIsLoading && (
       <View style={containerStyles.loadingContainer}>
         <LoadingSpinner />
       </View>

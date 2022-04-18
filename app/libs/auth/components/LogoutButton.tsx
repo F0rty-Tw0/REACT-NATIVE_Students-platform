@@ -1,7 +1,8 @@
 // COMPONENTS
 import { Text, Pressable } from 'react-native';
 // REDUX
-import { logout } from '@libs/auth/redux/actions/authActions';
+import { logoutAndCleanUser } from '@libs/auth/redux/actions/authActions';
+import { cleanProfileForm } from '@libs/shared/lib/profile-form/redux/actions/profileFormActions';
 // HOOKS
 import { useDispatch } from 'react-redux';
 // STYLES
@@ -15,7 +16,8 @@ export const LogoutButton = () => {
   return (
     <Pressable
       onPress={() => {
-        dispatch(logout());
+        dispatch(logoutAndCleanUser());
+        dispatch(cleanProfileForm());
       }}
       style={({ pressed }) => [
         {

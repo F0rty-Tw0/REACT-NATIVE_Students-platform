@@ -18,11 +18,12 @@ export interface GetAllChatRoomsLoading {
 
 export interface GetAllChatRoomsSuccess {
   type: typeof GET_ALL_CHAT_ROOMS_SUCCESS;
-  payload: ChatInterface[];
+  chatRooms: ChatInterface[];
 }
 
 export interface GetAllChatRoomsFailure {
   type: typeof GET_ALL_CHAT_ROOMS_FAILURE;
+  error: string;
 }
 
 export interface CreateChatRoomLoading {
@@ -31,11 +32,12 @@ export interface CreateChatRoomLoading {
 
 export interface CreateChatRoomSuccess {
   type: typeof CREATE_CHAT_ROOM_SUCCESS;
-  payload: ChatInterface;
+  chatRoom: ChatInterface;
 }
 
 export interface CreateChatRoomFailure {
   type: typeof CREATE_CHAT_ROOM_FAILURE;
+  error: string;
 }
 
 export type ChatRoomDispatchTypes =

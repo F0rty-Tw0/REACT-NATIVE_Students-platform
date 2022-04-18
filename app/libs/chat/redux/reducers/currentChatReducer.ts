@@ -6,7 +6,7 @@ const initialState: ChatInterface | null = null;
 
 interface ActionInterface {
   type: string;
-  payload: ChatInterface | ChatInterface[];
+  payload: ChatInterface;
 }
 
 export const currentChatReducer = (
@@ -16,11 +16,9 @@ export const currentChatReducer = (
     payload: {} as ChatInterface,
   }
 ) => {
-
   switch (action.type) {
     case SET_CURRENT_CHAT_ROOM:
-  console.log(action.payload)
-      return action.payload;
+      return { name: action.payload.name, chatId: action.payload.chatId };
     default:
       return state;
   }

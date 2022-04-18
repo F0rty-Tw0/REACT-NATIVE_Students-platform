@@ -1,7 +1,6 @@
 // COMPONENTS
 import { ProfilePicture } from '@libs/shared/lib/profile-form/components/ProfilePicture';
-import { ProfileName } from '@libs/shared/lib/profile-form/components/ProfileName';
-import { ProfileProgramme } from '@libs/shared/lib/profile-form/components/ProfileProgramme';
+import { LabeledInput } from '@libs/shared/components/LabeledInput';
 import { ProfileButton } from '@libs/shared/lib/profile-form/components/ProfileButton';
 // HOOKS
 import { useEffect, useState } from 'react';
@@ -57,10 +56,17 @@ export const ProfileForm = ({ buttonText }: ProfileFormProps) => {
         pictureSource={pictureUrl}
         handlePictureUpload={handlePictureUpload}
       />
-      <ProfileName name={name} setName={setName} />
-      <ProfileProgramme
-        studyProgramme={studyProgramme}
-        setStudyProgramme={setStudyProgramme}
+      <LabeledInput
+        label='What is your name?'
+        placeholderText='First name and last name'
+        value={name}
+        setValue={setName}
+      />
+      <LabeledInput
+        label='Study programme'
+        placeholderText='Select from list'
+        value={studyProgramme}
+        setValue={setStudyProgramme}
       />
       <ProfileButton
         text={buttonText}

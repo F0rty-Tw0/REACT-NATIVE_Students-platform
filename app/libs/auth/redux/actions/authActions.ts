@@ -13,11 +13,7 @@ import {
   LOGOUT,
 } from '@libs/auth/redux/authStoreTypes';
 // SERVICES
-import { login, register } from '@libs/auth/services/authService';
-export const logout = () => ({
-  type: LOGOUT,
-});
-
+import { login, logout, register } from '@libs/auth/services/authService';
 export const cleanAuthErrors = () => ({
   type: CLEAN_AUTH_ERRORS,
 });
@@ -50,5 +46,15 @@ export const registerAndSetUser =
     } catch (error: any) {
       dispatch({ type: REGISTER_FAILURE, error: error.message });
       throw new Error('Register failed');
+    }
+  };
+
+export const logoutAndCleanUser =
+  () => async (dispatch: Dispatch<AuthDispatchTypes>) => {
+    try {
+      dispatch({ type: LOGOUT });
+      await logout();
+    } catch (error: any) {
+      throw new Error('Logout failed');
     }
   };

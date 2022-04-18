@@ -1,18 +1,20 @@
-import { chatRef } from '@/app/data-access/firebase';
 import { child, push, set, remove, update } from 'firebase/database';
+import { chatRef } from '@app/data-access/firebase';
 import { MessageInterface } from '@libs/chat/models/interfaces/messageInterface';
 
 export const addMessageToChat = async (
-  chatId: string,
-  text: string
+  messageObject: MessageInterface
 ): Promise<MessageInterface> => {
-  const newMessageId = push(chatRef).key || '';
-  if (newMessageId) {
-    await set(child(chatRef, `/${chatId}/messages/${newMessageId}`), {
-      text,
+  const messageId = push(chatRef).key || '';
+  if (messageId) {
+    await set(child(chatRef, `/${messageObject.chatId}/messages/${messageId}`), {
+      ...messageObject,
     });
   }
-  return { chatId, messageId: newMessageId, text } as MessageInterface;
+  return {
+    ...messageObject,
+    messageId,
+  } as MessageInterface;
 };
 
 export const toggleLikeToMessage = async (

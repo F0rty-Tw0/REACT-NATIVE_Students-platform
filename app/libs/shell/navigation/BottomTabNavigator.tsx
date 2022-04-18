@@ -2,23 +2,21 @@
 import { ShellScreensNavigator } from '@libs/shell/navigation/ShellScreensNavigator';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TabBarIcon } from '@libs/shared/components/TabBarIcon';
-import { EditProfileScreen } from '@libs/menu/profile/screens/EditProfileScreen';
-
+import { ChatRooms } from '@libs/chat/components/ChatRoom/ChatRooms';
+import { MenuScreen } from '@libs/menu/src/screens/MenuScreen';
 // TYPES
 import { ShellTabParamList } from '@libs/shell/types/shellScreenTypes';
 // STYLES
 import { actionBlue } from '@libs/shared/styles/Colors';
-import { MenuScreen } from '@libs/menu/src/screens/MenuScreen';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const BottomTab = createBottomTabNavigator<ShellTabParamList>();
-const Stack = createNativeStackNavigator<ShellTabParamList>();
 export const BottomTabNavigator = () => {
   return (
     <BottomTab.Navigator
       initialRouteName='Home'
       screenOptions={{
         tabBarStyle: {
+          overflow: 'hidden',
           height: 80,
         },
         tabBarLabelStyle: {
@@ -55,8 +53,8 @@ export const BottomTabNavigator = () => {
         }}
       />
       <BottomTab.Screen
-        name='Chat'
-        component={MenuScreen}
+        name='ChatRooms'
+        component={ChatRooms}
         options={{
           title: 'Chat',
           tabBarIcon: ({ color }) => (

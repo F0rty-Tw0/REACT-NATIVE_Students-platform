@@ -1,30 +1,61 @@
-import { useState } from 'react';
+import dayjs from 'dayjs';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { StyleSheet, View, Text, Button, TextInput } from 'react-native';
-import { useAppSelector } from '@/hooks/redux-hooks/useAppSelector';
+import { useAppSelector } from '@libs/shared/hooks/redux-hooks/useAppSelector';
 import { MessageInterface } from '@libs/chat/models/interfaces/messageInterface';
 import {
   addMessage,
   toggleLikeMessage,
   deleteMessage,
 } from '@libs/chat/redux/actions/messageActions';
+import { ShellScreenProp } from '@libs/shell/types/shellScreenTypes';
+import { useNavigation } from '@react-navigation/native';
+import { ChatInterface } from '../models/interfaces/chatInterface';
+import { AuthUserInterface } from '@libs/auth/models/interfaces/authInterface';
 
-interface ChatProps {
-  selectedChatId: string;
-  selectedChatName: string;
-}
-
-export default function Chat({ selectedChatId, selectedChatName }: ChatProps) {
-  const dispatch = useDispatch();
-  const [message, setMessage] = useState('');
+export const Chat = () => {
+  const chat: ChatInterface = useAppSelector(
+    (state) => state.currentChatReducer
+  );
 
   const chatMessages: MessageInterface[] = useAppSelector((state) => {
     return state.messageReducer;
   });
 
+  const userPictureUrl: string = useAppSelector(
+    (state) => state.profileFormReducer.pictureUrl
+  );
+
+  const user = useAppSelector<AuthUserInterface>(
+    (state) => state.authReducer.user
+  );
+
+  const navigation = useNavigation<ShellScreenProp>();
+
+  const dispatch = useDispatch();
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    navigation.setOptions({ title: chat.name });
+  }, [chat.name]);
+
+  const handleAddMessage = () => {
+    const messageObject = {
+      chatId: chat.chatId,
+      messageId: '',
+      text: message,
+      userId: user.id,
+      userEmail: user.email,
+      timeStamp: dayjs().format('DD-MMM HH:mm'),
+      userPictureUrl,
+    };
+    dispatch(addMessage(messageObject));
+    setMessage('');
+  };
   return (
     <View style={styles.container}>
-      <Text>Chatting in {selectedChatName}</Text>
+      <Text>Chatting in {chat.name}</Text>
       {chatMessages?.map((chatMessage: MessageInterface) => (
         <View key={chatMessage.messageId}>
           <Text>{chatMessage.text}</Text>
@@ -32,7 +63,7 @@ export default function Chat({ selectedChatId, selectedChatName }: ChatProps) {
           <Button
             title='Delete'
             onPress={() =>
-              dispatch(deleteMessage(selectedChatId, chatMessage.messageId))
+              dispatch(deleteMessage(chat.chatId, chatMessage.messageId))
             }
           />
           <Button
@@ -40,7 +71,7 @@ export default function Chat({ selectedChatId, selectedChatName }: ChatProps) {
             onPress={() =>
               dispatch(
                 toggleLikeMessage(
-                  selectedChatId,
+                  chat.chatId,
                   chatMessage.messageId,
                   !chatMessage.isFavorite
                 )
@@ -58,14 +89,11 @@ export default function Chat({ selectedChatId, selectedChatName }: ChatProps) {
       <Button
         disabled={message.length === 0}
         title='Add'
-        onPress={() => {
-          setMessage('');
-          dispatch(addMessage(selectedChatId, message));
-        }}
+        onPress={handleAddMessage}
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

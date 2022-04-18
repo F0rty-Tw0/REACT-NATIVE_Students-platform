@@ -7,6 +7,7 @@ export const CLEAN_PROFILE_FORM_ERRORS = 'CLEAN_PROFILE_FORM_ERRORS';
 export const UPLOAD_PICTURE_LOADING = 'UPLOAD_PICTURE_LOADING';
 export const UPLOAD_PICTURE_SUCCESS = 'UPLOAD_PICTURE_SUCCESS';
 export const UPLOAD_PICTURE_FAILURE = 'UPLOAD_PICTURE_FAILURE';
+export const CLEAN_PROFILE_FORM = 'CLEAN_PROFILE_FORM';
 export interface SubmitProfileFormLoading {
   type: typeof SUBMIT_PROFILE_FORM_LOADING;
 }
@@ -39,6 +40,10 @@ export interface CleanProfileFormErrors {
   type: typeof CLEAN_PROFILE_FORM_ERRORS;
 }
 
+export interface CleanProfileForm {
+  type: typeof CLEAN_PROFILE_FORM;
+}
+
 export type ProfileFormDispatchTypes =
   | SubmitProfileFormLoading
   | SubmitProfileFormSuccess
@@ -46,4 +51,5 @@ export type ProfileFormDispatchTypes =
   | UploadPictureLoading
   | UploadPictureSuccess
   | UploadPictureFailure
-  | CleanProfileFormErrors;
+  | CleanProfileFormErrors
+  | CleanProfileForm;
