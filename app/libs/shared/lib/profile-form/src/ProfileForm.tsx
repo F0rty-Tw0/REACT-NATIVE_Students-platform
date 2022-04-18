@@ -14,7 +14,11 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { AuthScreenProp } from '@libs/auth/types/authScreenTypes';
 
-export const ProfileForm = () => {
+interface ProfileFormProps {
+  buttonText: string;
+}
+
+export const ProfileForm = ({ buttonText }: ProfileFormProps) => {
   const { profile, pictureUrl } = useAppSelector(
     (state) => state.profileFormReducer
   );
@@ -59,7 +63,7 @@ export const ProfileForm = () => {
         setStudyProgramme={setStudyProgramme}
       />
       <ProfileButton
-        text='Next'
+        text={buttonText}
         formCompleted={formCompleted}
         handleOnPress={handleOnPress}
       />

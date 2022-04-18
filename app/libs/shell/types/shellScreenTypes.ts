@@ -3,7 +3,10 @@ import {
   CompositeScreenProps,
   NavigatorScreenParams,
 } from '@react-navigation/native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 // TYPES
 import { AuthScreenParamList } from '@libs/auth/types/authScreenTypes';
 
@@ -12,6 +15,7 @@ export type ShellStackParamList = {
   Splash: undefined;
   Shell: NavigatorScreenParams<ShellTabParamList> | undefined;
   Auth: AuthScreenParamList | undefined;
+  EditProfile: undefined;
   Onboarding: undefined;
   // Discover: undefined;
   // Events: undefined;
@@ -32,8 +36,13 @@ export type ShellTabParamList = {
   Discover: undefined;
   Chat: undefined;
   Menu: undefined;
+  EditProfile: undefined;
 };
 
+export type ShellScreenProp = NativeStackNavigationProp<
+  ShellStackParamList,
+  'Shell'
+>;
 export type ShellStackScreenProps<Screen extends keyof ShellStackParamList> =
   NativeStackScreenProps<ShellStackParamList, Screen>;
 

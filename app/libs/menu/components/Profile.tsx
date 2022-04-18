@@ -8,6 +8,9 @@ import { profileImageStyle } from '@libs/shared/lib/profile-form/styles/profileI
 import { textStyle } from '@libs/shared/styles/Text';
 import { buttonStyle } from '@libs/shared/styles/Buttons';
 import { shadowStyles } from '@libs/shared/styles/Shadows';
+import { useNavigation } from '@react-navigation/native';
+import { ShellScreenProp } from '@libs/shell/types/shellScreenTypes';
+import { Shell } from '@libs/shell/navigation/ShellLinkingOptions';
 
 export const Profile = () => {
   const { pictureUrl, profile } = useAppSelector(
@@ -16,7 +19,11 @@ export const Profile = () => {
   const {
     user: { email },
   } = useAppSelector((state: any) => state.authReducer);
+  const navigation = useNavigation<ShellScreenProp>();
 
+  const handleEditPress = () => {
+    navigation.navigate('EditProfile' );
+  };
   return (
     <View style={{ borderBottomWidth: 1, borderBottomColor: '#E0E0E0' }}>
       <View style={containerStyles.twoColumnsContainer}>
@@ -43,9 +50,7 @@ export const Profile = () => {
             marginBottom: 30,
           },
         ]}
-        onPress={() => {
-          console.log('test');
-        }}
+        onPress={handleEditPress}
       >
         <Text style={[textStyle.buttonText, textStyle.centerText]}>
           Edit profile

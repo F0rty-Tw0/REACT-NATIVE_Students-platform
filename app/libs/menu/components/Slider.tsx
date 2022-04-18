@@ -32,13 +32,13 @@ export const Slider = ({
         </Text>
       </View>
       <Switch
-        style={{ transform: [{ scaleX: 1.3 }, { scaleY: 1.3 }]}}
+        style={{ transform: [{ scaleX: 1.3 }, { scaleY: 1.3 }] }}
         trackColor={{ false: '#AAAAAA80', true: actionBlueDisabled + 80 }}
         thumbColor={isActive ? actionBlue : '#F5F5F5'}
         onValueChange={handleToggle}
         activeThumbColor={actionBlue} // This one is only for the web to override the thumbColor
         value={isActive}
-      ></Switch>
+      />
     </View>
   );
 };

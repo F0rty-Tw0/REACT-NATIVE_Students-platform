@@ -14,7 +14,7 @@ export const OnboardingScreen = () => {
         <Text style={[textStyle.title, { marginBottom: 50 }]}>
           Before we start...
         </Text>
-        <ProfileForm />
+        <ProfileForm buttonText='Save' />
       </View>
     </View>
   );

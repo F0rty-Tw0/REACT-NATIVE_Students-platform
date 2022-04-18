@@ -2,14 +2,17 @@
 import { ShellScreensNavigator } from '@libs/shell/navigation/ShellScreensNavigator';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TabBarIcon } from '@libs/shared/components/TabBarIcon';
+import { EditProfileScreen } from '@libs/menu/profile/screens/EditProfileScreen';
+
 // TYPES
 import { ShellTabParamList } from '@libs/shell/types/shellScreenTypes';
 // STYLES
 import { actionBlue } from '@libs/shared/styles/Colors';
 import { MenuScreen } from '@libs/menu/src/screens/MenuScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const BottomTab = createBottomTabNavigator<ShellTabParamList>();
-
+const Stack = createNativeStackNavigator<ShellTabParamList>();
 export const BottomTabNavigator = () => {
   return (
     <BottomTab.Navigator
