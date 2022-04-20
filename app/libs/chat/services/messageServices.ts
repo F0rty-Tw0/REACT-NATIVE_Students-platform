@@ -7,9 +7,12 @@ export const addMessageToChat = async (
 ): Promise<MessageInterface> => {
   const messageId = push(chatRef).key || '';
   if (messageId) {
-    await set(child(chatRef, `/${messageObject.chatId}/messages/${messageId}`), {
-      ...messageObject,
-    });
+    await set(
+      child(chatRef, `/${messageObject.chatId}/messages/${messageId}`),
+      {
+        ...messageObject,
+      }
+    );
   }
   return {
     ...messageObject,
@@ -24,6 +27,16 @@ export const toggleLikeToMessage = async (
 ): Promise<void> => {
   await update(child(chatRef, `/${chatId}/messages/${messageId}`), {
     isFavorite,
+  });
+};
+
+export const toggleIsLastToMessage = async (
+  chatId: string,
+  messageId: string,
+  isLast: boolean
+): Promise<void> => {
+  await update(child(chatRef, `/${chatId}/messages/${messageId}`), {
+    isLast,
   });
 };
 

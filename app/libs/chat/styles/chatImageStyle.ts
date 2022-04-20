@@ -17,4 +17,24 @@ export const chatImageStyle = StyleSheet.create({
     width: 55,
     height: 55,
   },
+  emptyStateImage: {
+    width: 80,
+    height: 80,
+  },
+  messageImageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 35,
+    height: 35,
+    borderRadius: 50,
+    marginRight: 15,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: '#e6e6e6',
+    backgroundColor: 'white',
+  },
+  messageImage: {
+    width: 35,
+    height: 35,
+  },
 });

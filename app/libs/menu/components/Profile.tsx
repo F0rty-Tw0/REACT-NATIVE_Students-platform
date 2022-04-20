@@ -1,6 +1,7 @@
 // COMPONENTS
 import { Text, View, Image } from 'react-native';
 import { ActionButton } from '@libs/shared/components/ActionButton';
+import User from '@images/user.svg';
 // HOOKS
 import { useAppSelector } from '@libs/shared/hooks/redux-hooks/useAppSelector';
 import { useNavigation } from '@react-navigation/native';
@@ -27,10 +28,14 @@ export const Profile = () => {
     <View style={{ borderBottomWidth: 1, borderBottomColor: '#E0E0E0' }}>
       <View style={containerStyles.twoColumnsContainer}>
         <View style={containerStyles.profileMenuImageContainer}>
-          <Image
-            style={profileImageStyle.profileMenuImage}
-            source={{ uri: pictureUrl }}
-          />
+          {pictureUrl ? (
+            <Image
+              style={profileImageStyle.profileMenuImage}
+              source={{ uri: pictureUrl }}
+            />
+          ) : (
+            <User />
+          )}
         </View>
         <View style={{ width: '100%' }}>
           <Text style={textStyle.title}>{profile.name}</Text>

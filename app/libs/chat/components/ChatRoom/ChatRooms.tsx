@@ -1,7 +1,7 @@
 // COMPONENTS
-import { View, FlatList, ScrollView } from 'react-native';
-import { ChatRoomEmptyState } from '@libs/chat/components/ChatRoom/ChatRoomEmptyState';
-import { ChatRoom } from '@libs/chat/components/ChatRoom/ChatRoom';
+import { View, FlatList } from 'react-native';
+import { ChatRoomsEmptyState } from '@libs/chat/components/ChatRoom/ChatRoomsEmptyState';
+import { ChatRoomDisplay } from '@libs/chat/components/ChatRoom/ChatRoomDisplay';
 import { CreateRoom } from '@libs/chat/components/ChatRoom/CreateRoom';
 // HOOKS
 import { useDispatch } from 'react-redux';
@@ -27,23 +27,23 @@ export const ChatRooms = () => {
   );
 
   const _renderChat = ({ item }: { item: ChatInterface }) => (
-    <ChatRoom chatRoom={item} />
+    <ChatRoomDisplay chatRoom={item} />
   );
+
   return (
     <View style={containerStyles.mainContainer}>
       {chatRooms.length ? (
         <>
-          <ScrollView  style={containerStyles.itemsContainer}>
-            <FlatList
-              data={chatRooms}
-              renderItem={_renderChat}
-              keyExtractor={(item) => item.chatId}
-            />
-          </ScrollView>
+          <FlatList
+            style={containerStyles.itemsContainer}
+            data={chatRooms}
+            renderItem={_renderChat}
+            keyExtractor={(item) => item.chatId}
+          />
           <CreateRoom />
         </>
       ) : (
-        <ChatRoomEmptyState />
+        <ChatRoomsEmptyState />
       )}
     </View>
   );

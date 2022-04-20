@@ -19,7 +19,7 @@ export const ActionButton = ({ buttonText, onPress }: ActionButtonProps) => (
         buttonStyle.actionButton,
         buttonStyle.actionBlueEnabled,
         shadowStyles.containerShadow,
-        { width: '100%', padding: 10, marginTop: 20, marginBottom: 30 },
+        { width: '100%', padding: 10, marginTop: 20 },
       ],
     ]}
     onPress={onPress}

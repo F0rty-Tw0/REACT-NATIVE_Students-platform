@@ -4,6 +4,7 @@ export interface MessageInterface {
   text: string;
   timeStamp: string;
   isFavorite?: boolean;
+  isLast?: boolean;
   userId: string;
   userEmail: string;
   userPictureUrl: string;

@@ -12,6 +12,9 @@ export const LIKE_MESSAGE_FAILURE = 'LIKE_MESSAGE_FAILURE';
 export const DELETE_MESSAGE_LOADING = 'DELETE_MESSAGE_LOADING';
 export const DELETE_MESSAGE_SUCCESS = 'DELETE_MESSAGE_SUCCESS';
 export const DELETE_MESSAGE_FAILURE = 'DELETE_MESSAGE_FAILURE';
+export const TOGGLE_IS_LAST_MESSAGE_LOADING = 'TOGGLE_IS_LAST_MESSAGE_LOADING';
+export const TOGGLE_IS_LAST_MESSAGE_SUCCESS = 'TOGGLE_IS_LAST_MESSAGE_SUCCESS';
+export const TOGGLE_IS_LAST_MESSAGE_FAILURE = 'TOGGLE_IS_LAST_MESSAGE_FAILURE';
 
 export interface AddMessageLoading {
   type: typeof ADD_MESSAGE_LOADING;
@@ -49,6 +52,18 @@ export interface DeleteMessageFailure {
   type: typeof DELETE_MESSAGE_FAILURE;
 }
 
+export interface ToggleIsLastMessageLoading {
+  type: typeof TOGGLE_IS_LAST_MESSAGE_LOADING;
+}
+
+export interface ToggleIsLastMessageSuccess {
+  type: typeof TOGGLE_IS_LAST_MESSAGE_SUCCESS;
+}
+
+export interface ToggleIsLastMessageFailure {
+  type: typeof TOGGLE_IS_LAST_MESSAGE_FAILURE;
+}
+
 export type MessageDispatchTypes =
   | AddMessageLoading
   | AddMessageSuccess
@@ -58,4 +73,7 @@ export type MessageDispatchTypes =
   | LikeMessageFailure
   | DeleteMessageLoading
   | DeleteMessageSuccess
-  | DeleteMessageFailure;
+  | DeleteMessageFailure
+  | ToggleIsLastMessageLoading
+  | ToggleIsLastMessageSuccess
+  | ToggleIsLastMessageFailure;

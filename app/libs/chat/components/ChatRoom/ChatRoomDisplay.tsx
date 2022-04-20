@@ -20,18 +20,16 @@ interface ChatRoomProps {
   chatRoom: ChatInterface;
 }
 
-export const ChatRoom = ({ chatRoom }: ChatRoomProps) => {
+export const ChatRoomDisplay = ({ chatRoom }: ChatRoomProps) => {
   const dispatch = useAppDispatcher();
   const navigation = useNavigation<ShellScreenProp>();
 
   const handleChatSelection = () => {
     dispatch(setCurrentChatRoom(chatRoom));
-    chatRoom.messages?.length &&
-      dispatch(setCurrentChatMessages(chatRoom.messages));
+    dispatch(setCurrentChatMessages(chatRoom.messages));
     navigation.navigate('Chat');
   };
 
-  const imageExists = false;
   const imageUrl = '';
   return (
     <Pressable
@@ -39,7 +37,10 @@ export const ChatRoom = ({ chatRoom }: ChatRoomProps) => {
         {
           opacity: pressed ? 0.7 : 1,
         },
-        [chatContainerStyle.twoColumnsContainer],
+        [
+          chatContainerStyle.twoColumnsContainer,
+          { paddingTop: 10, paddingBottom: 10 },
+        ],
       ]}
       onPress={handleChatSelection}
     >
@@ -49,7 +50,7 @@ export const ChatRoom = ({ chatRoom }: ChatRoomProps) => {
           shadowStyles.containerShadow,
         ]}
       >
-        {imageExists ? (
+        {imageUrl ? (
           <Image source={{ uri: imageUrl }} style={chatImageStyle.chatImage} />
         ) : (
           <Image
@@ -58,7 +59,7 @@ export const ChatRoom = ({ chatRoom }: ChatRoomProps) => {
           />
         )}
       </View>
-      <View style={{ width: '80%' }}>
+      <View style={{ width: '100%' }}>
         <Text style={chatTextStyle.chatTitle}>{chatRoom.name}</Text>
         {chatRoom.messages?.length > 0 && (
           <View style={containerStyles.twoColumnsContainer}>
@@ -69,7 +70,7 @@ export const ChatRoom = ({ chatRoom }: ChatRoomProps) => {
               style={[
                 chatTextStyle.chatSubtitle,
                 {
-                  marginLeft: 5,
+                  marginRight: '25%',
                   textAlign: 'right',
                 },
               ]}

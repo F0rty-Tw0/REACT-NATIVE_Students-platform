@@ -6,6 +6,7 @@ import {
   ADD_MESSAGE_TO_CURRENT_CHAT_ROOM,
   DELETE_MESSAGE_FROM_CURRENT_CHAT_ROOM,
   LIKE_MESSAGE_IN_CURRENT_CHAT_ROOM,
+  TOGGLE_IS_LAST_MESSAGE_IN_CURRENT_CHAT_ROOM,
 } from '@libs/chat/redux/types/sharedTypes';
 import { MessageInterface } from '@libs/chat/models/interfaces/messageInterface';
 import {
@@ -19,11 +20,15 @@ import {
   LIKE_MESSAGE_LOADING,
   LIKE_MESSAGE_SUCCESS,
   LIKE_MESSAGE_FAILURE,
+  TOGGLE_IS_LAST_MESSAGE_LOADING,
+  TOGGLE_IS_LAST_MESSAGE_SUCCESS,
+  TOGGLE_IS_LAST_MESSAGE_FAILURE,
 } from '@libs/chat/redux/types/messageTypes';
 import {
   addMessageToChat,
   deleteMessageFromChat,
   toggleLikeToMessage,
+  toggleIsLastToMessage,
 } from '@libs/chat/services/messageServices';
 
 export const setCurrentChatMessages = (messages: MessageInterface[]) => ({
@@ -63,6 +68,26 @@ export const toggleLikeMessage =
     } catch (error) {
       console.log(error);
       dispatch({ type: LIKE_MESSAGE_FAILURE });
+    }
+  };
+
+export const toggleLastMessage =
+  (chatId: string, messageId: string, isLast: boolean) =>
+  async (
+    dispatch: Dispatch<MessageDispatchTypes | ChatDispatchTypes>
+  ): Promise<void> => {
+    try {
+      console.log({ chatId, messageId, isLast });
+      dispatch({ type: TOGGLE_IS_LAST_MESSAGE_LOADING });
+      await toggleIsLastToMessage(chatId, messageId, isLast);
+      dispatch({
+        type: TOGGLE_IS_LAST_MESSAGE_IN_CURRENT_CHAT_ROOM,
+        payload: { messageId, isLast },
+      });
+      dispatch({ type: TOGGLE_IS_LAST_MESSAGE_SUCCESS });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: TOGGLE_IS_LAST_MESSAGE_FAILURE });
     }
   };
 
