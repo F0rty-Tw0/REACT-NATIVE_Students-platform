@@ -11,7 +11,7 @@ import useColorScheme from '@libs/shared/hooks/useColorScheme';
 // DATA ACCESS
 import '@app/data-access/firebase';
 // STORE
-import { store, persistor } from '@app/redux/store';
+import { store, persistor } from '@app/data-access/redux/store';
 
 const App = () => {
   const isLoadingComplete = useCachedResources();

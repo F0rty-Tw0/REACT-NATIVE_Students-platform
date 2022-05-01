@@ -4,7 +4,7 @@ import { BottomTabNavigator } from '@libs/shell/navigation/BottomTabNavigator';
 import { OnboardingScreen } from '@libs/onboarding/screens/OnboardingScreen';
 import { ShellStackParamList } from '@libs/shell/types/shellScreenTypes';
 import { EditProfileScreen } from '@libs/menu/edit-profile/screens/EditProfileScreen';
-import { Chat } from '@libs/chat/components/Chat';
+import { Chat } from '@libs/chat/messages/screens/Chat';
 // STYLES
 import { actionBlue } from '@libs/shared/styles/Colors';
 

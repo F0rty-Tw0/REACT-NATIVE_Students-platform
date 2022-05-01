@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
+
 const firebaseConfig = {
   apiKey: process.env.REACT_NATIVE_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_NATIVE_APP_FIREBASE_AUTH_DOMAIN,
@@ -14,8 +15,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const database = getDatabase(app);
+
 auth.onAuthStateChanged((user) => {
   user ? console.log('Loading user data') : console.log("User doesn't exist");
 });
+
 //TODO: move to own lib
 export const chatRef = ref(database, 'chat');

@@ -23,7 +23,7 @@ export const login = async ({
     await setPersistence(auth, browserSessionPersistence);
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     return {
-      email: user.email,
+      email: user.email ? user.email : '',
       id: user.uid,
       token: user.refreshToken,
     };
@@ -45,7 +45,7 @@ export const register = async ({
       password
     );
     return {
-      email: user.email,
+      email: user.email ? user.email : '',
       id: user.uid,
       token: user.refreshToken,
     };

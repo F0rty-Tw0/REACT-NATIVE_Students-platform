@@ -2,7 +2,7 @@
 import { ShellScreensNavigator } from '@libs/shell/navigation/ShellScreensNavigator';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TabBarIcon } from '@libs/shared/components/TabBarIcon';
-import { ChatRooms } from '@libs/chat/components/ChatRoom/ChatRooms';
+import { ChatRooms } from '@libs/chat/chat-rooms/screens/ChatRooms';
 import { MenuScreen } from '@libs/menu/src/screens/MenuScreen';
 // TYPES
 import { ShellTabParamList } from '@libs/shell/types/shellScreenTypes';
